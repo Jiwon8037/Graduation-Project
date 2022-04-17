@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import PlaceItems from './PlaceItems';
 
 const PlaceList = ({placeData}) => {
-
+    const placeListsPlaceData=[...placeData];
     return (
         <div>
             <div className='placeList' style={{backgroundColor:'Chartreuse'}}> 
-                {placeData.map(placeData=>(
-                    <PlaceItems placeData={placeData}/>
+                {placeListsPlaceData.map(placeListsPlaceData=>(
+                    <PlaceItems placeData={placeListsPlaceData}/>
                 ))}
             </div>
         </div>

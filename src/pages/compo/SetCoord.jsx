@@ -36,7 +36,6 @@ const SetCoord = () => {
         }).catch(error=>{
             console.log(error);
         });
-        setContent('');
     };
 
     return (
