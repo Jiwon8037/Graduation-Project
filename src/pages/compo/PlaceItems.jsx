@@ -1,7 +1,8 @@
 import React from 'react';
 
 const PlaceItems = ({placeData}) => {
-    const {place_name}=placeData;
+    const placeItemsPlaceData={...placeData};
+    const {place_name}=placeItemsPlaceData;
     return (
         <div>
             <li>
