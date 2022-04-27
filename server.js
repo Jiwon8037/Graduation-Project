@@ -30,6 +30,36 @@ app.post('/getData',(req,res)=>{
     })
 });
 
+let users=[];
+userinfo={
+    id:'',
+    pw:'',
+}
+app.post('/api/register',(req,res)=>{
+    userinfo={
+        id:req.body.id,
+        pw:req.body.pw,
+    }
+    users.push(userinfo);
+    console.log(users)
+    res.send('true');
+});
+app.post('/api/login',(req,res)=>{
+    let isLogin=false;
+    let loginUser;
+    for(let i=0; i<users.length; i++){
+        if(users[i].id===req.body.id && users[i].pw===req.body.pw){
+            isLogin=true;
+            loginUser=users[i].id;
+            break;
+        }
+    }
+    if(isLogin===true){
+        res.json({id:loginUser});
+    }
+    else res.send('check id or pw !');
+});
+
 server.listen(port, ()=> {
     console.log(port+'포트로 서버 실행');
   });
