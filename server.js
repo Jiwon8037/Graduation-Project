@@ -158,6 +158,16 @@ app.post('/api/login',(req,res)=>{
     else res.send('check id or pw !');
 });
 
+let userPlaceList;
+app.post('/api/makeSchedule',(req,res)=>{
+    userPlaceList=req.body;
+    console.log(userPlaceList)
+});
+
+app.get('/api/mySchedule',(req,res)=>{
+    res.json(userPlaceList);
+})
+
 server.listen(port, ()=> {
     console.log(port+'포트로 서버 실행');
   });
