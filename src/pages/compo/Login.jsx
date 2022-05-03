@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 
-const Login = ({isLogIn,isLogOut,loginState}) => {
+const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
     let userLoginState=`${loginState}`;
-    const [userName,setUserName]=useState('');
 
     const [loginForm,setLoginForm]=useState({
         id:'',
@@ -22,7 +21,7 @@ const Login = ({isLogIn,isLogOut,loginState}) => {
             ).then(res=>{
                 if(res.data.id===loginForm.id){
                     isLogIn();
-                    setUserName(res.data.id);
+                    getUserId(res.data.id)
                 }else alert(res.data);
             }).catch((err)=>{
                 console.log(err);
@@ -30,13 +29,13 @@ const Login = ({isLogIn,isLogOut,loginState}) => {
     }
     const logOut=()=>{
         isLogOut();
-        setUserName('');
+        getUserId('');
     }
     return (
         <div>
             <h1>login page</h1>
             <h2>login now? : {userLoginState}</h2>
-            <h2>user : {userName}</h2>
+            <h2>user : {userId}</h2>
             ID : <input name='id' placeholder='id' onChange={onChange}/><br/>
             PW : <input name='pw' placeholder='pw' onChange={onChange}/><br/>
             <button onClick={onClick}>login button</button>

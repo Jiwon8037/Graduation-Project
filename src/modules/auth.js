@@ -1,12 +1,16 @@
 
 const IS_LOGIN='auth/IS_LOGIN';
 const IS_LOGOUT='auth/IS_LOGOUT';
+const GET_USER='auth/GET_USER';
 
 export const isLogIn=()=>({type:IS_LOGIN});
 export const isLogOut=()=>({type:IS_LOGOUT});
+export const getUserId=(input)=>({type:GET_USER, input});
+
 
 const initialState={
-    loginState:false
+    loginState:false,
+    userId:''
 }
 
 function auth(state=initialState,action){
@@ -15,6 +19,10 @@ function auth(state=initialState,action){
             return {loginState : true};
         case IS_LOGOUT:
             return {loginState:false};
+        case GET_USER:
+            return {...state,
+                userId:state.userId=action.input
+            };
         default : return state;
     }
 }
