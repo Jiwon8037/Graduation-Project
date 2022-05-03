@@ -165,7 +165,9 @@ app.post('/api/makeSchedule',(req,res)=>{
 });
 
 app.get('/api/mySchedule',(req,res)=>{
-    res.json(userPlaceList);
+    if(userPlaceList!=null){
+        res.json(userPlaceList);
+    }
 })
 
 server.listen(port, ()=> {
