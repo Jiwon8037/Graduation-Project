@@ -6,6 +6,7 @@ const port = 8080
 const server=http.createServer(app)
 const fs = require('fs')
 const dotenv = require('dotenv').config({ path: "./.env"});
+const url=require('url');
 
 const apiUrl= 'https://dapi.kakao.com/v2/local/search/keyword.json?query=';
 const apiKey= process.env.REACT_APP_API_REST_KEY;
@@ -168,6 +169,80 @@ app.get('/api/mySchedule',(req,res)=>{
     if(userPlaceList!=null){
         res.json(userPlaceList);
     }
+})
+
+app.get('/api/myPageList',(req,res)=>{
+    const queryData=url.parse(req.url,true).query;
+    console.log(queryData);
+    res.json([
+        {
+            userId:queryData.userId,
+
+            start_date:'2022-05-05',
+
+            end_date:'2022-05-06',
+
+            plan_id:'1',
+
+            title:'hello plans1',
+
+            places:[
+                {
+                    id: '11004596',
+                    place_name: '대부도',
+                    road_address_name: '',
+                    x: '126.596768094707',
+                    y: '37.246138589609',
+                    checked:true,
+                    day:'1'
+                },
+                {
+                    id: '18741257',
+                    place_name: '대부해솔길 1코스',
+                    x: '126.55143895278526',
+                    y: '37.27999142327456',
+                    checked:true,
+                    day:'2'
+                },
+            ],
+            place_num:2,
+            
+            liked:30,
+        },
+        {
+            userId:queryData.userId,
+
+            start_date:'2022-06-05',
+
+            end_date:'2022-06-06',
+
+            plan_id:'2',
+
+            title:'hello plans2',
+
+            places:[
+                {
+                    id: '8691040',
+                    place_name: '화랑유원지',
+                    x: '126.814341858481',
+                    y: '37.3265944170577',
+                    checked:true,
+                    day:'1'
+                  },
+                  {
+                    id: '26957378',
+                    place_name: '시화방조제',
+                    x: '126.606330737015',
+                    y: '37.3092720051821',
+                    checked:true,
+                    day:'2'
+                  },
+            ],
+            place_num:2,
+            
+            liked:23,
+        }
+    ]);
 })
 
 server.listen(port, ()=> {

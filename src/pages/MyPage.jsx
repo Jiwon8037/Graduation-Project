@@ -1,38 +1,32 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import MapRander from './compo/MapRander';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-const MyPage = () => {
-    const [myPlaceList,setMyPlaceList]=useState([
-        {
-            id: '123456',
-            place_name:'',
-            x: '126.92766444856224',
-            y: '37.38030121417301',
-            checked:false
-        },
-    ]);
+const MyPageList = ({getPlanData,myPlans,loginState,userId}) => {
 
     useEffect(()=>{
-    axios.get('api/mySchedule'
-        ).then((res)=>{
-            if(res.data!=undefined){
-                setMyPlaceList(res.data)
-            };
-        }).catch(error=>{
+        axios.get('api/myPageList',{params:{userId}})
+        .then(res=>{
+            getPlanData(res.data);
+            //console.log(myPlans);
+        })
+        .catch(error=>{
             console.log(error);
         });
     },[]); 
 
     return (
         <div>
-             <h2>my page</h2>
-             <MapRander placeData={myPlaceList}/>
-             {myPlaceList.map(place=>(
-                 <div>{place.place_name}</div>
-             ))}
+            <h2>my page</h2>
+            <div className='myplanlist'>
+                {myPlans.map(plan=>(
+                    <div>
+                        {plan.plan_id} :<Link to={`/myplan/${plan.plan_id}`}>{plan.title}</Link>  {plan.start_date}~{plan.end_date}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
 
-export default MyPage;
+export default MyPageList;
