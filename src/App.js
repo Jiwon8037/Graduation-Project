@@ -3,13 +3,13 @@ import SetCoord from './pages/compo/SetCoord';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
-import MyPage from './pages/MyPage';
+import MyPlan from './pages/MyPlan';
 import Register from './pages/compo/Register'
 import AuthContainer from './containers/AuthContainer';
 import { connect } from 'react-redux';
 import MyPageContainer from './containers/MyPageContainer';
 
-function App({loginState,userId}) {
+function App({loginState,userId,myPlans}) {
   return (
     <div className="App">
       <Routes>
@@ -17,7 +17,7 @@ function App({loginState,userId}) {
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetCoord/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
-          <Route path='/mypage' element={<MyPage/>}/>
+          <Route path='/myplan/:plan_id' element={<MyPlan myPlans={myPlans}/>}/>
           <Route path='/mypageList' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>
           <Route path='/register' element={<Register/>}/>
         </Route>
@@ -30,6 +30,7 @@ function App({loginState,userId}) {
 const mapStateProps=state=>({
   loginState:state.auth.loginState,
   userId:state.auth.userId,
+  myPlans:state.myPlanList.myPlans
 });
 
 export default connect(mapStateProps)(App);

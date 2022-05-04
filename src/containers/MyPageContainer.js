@@ -1,5 +1,5 @@
 import React from 'react';
-import MyPageList from '../pages/MyPageList';
+import MyPageList from '../pages/MyPage';
 import { getPlanData } from '../modules/myPlanList';
 import { connect } from 'react-redux';
 
