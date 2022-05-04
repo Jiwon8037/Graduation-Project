@@ -1,4 +1,3 @@
-
 const IS_LOGIN='auth/IS_LOGIN';
 const IS_LOGOUT='auth/IS_LOGOUT';
 const GET_USER='auth/GET_USER';

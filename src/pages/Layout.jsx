@@ -12,7 +12,7 @@ const Layout = ({loginState,userId}) => {
                 <h3>user id : {userId}</h3>
                 <button><Link to='/login'>login</Link></button>
                 <button><Link to='/register'>register</Link></button>
-                <button><Link to='/mypageList'>mypage</Link></button>
+                <button><Link to='/mypage'>mypage</Link></button>
                 <button><Link to='/makeSchedule'>make schedule</Link></button>
             </header>
             <main>

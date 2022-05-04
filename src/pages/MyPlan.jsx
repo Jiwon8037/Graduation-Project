@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import MapRander from './compo/MapRander';
 
-const MyPage = ({myPlans}) => {
+const MyPlan = ({myPlans}) => {
     const params=useParams();
     const planId=Number(params.plan_id)-1;
     const {title,places}=myPlans[planId];
@@ -19,4 +19,4 @@ const MyPage = ({myPlans}) => {
     );
 };
 
-export default MyPage;
+export default MyPlan;

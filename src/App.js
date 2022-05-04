@@ -18,7 +18,7 @@ function App({loginState,userId,myPlans}) {
           <Route path='/makeSchedule' element={<SetCoord/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
           <Route path='/myplan/:plan_id' element={<MyPlan myPlans={myPlans}/>}/>
-          <Route path='/mypageList' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>
+          <Route path='/mypage' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>
           <Route path='/register' element={<Register/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>

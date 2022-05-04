@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const MyPageList = ({getPlanData,myPlans,loginState,userId}) => {
+const MyPage = ({getPlanData,myPlans,loginState,userId}) => {
 
     useEffect(()=>{
         axios.get('api/myPageList',{params:{userId}})
@@ -29,4 +29,4 @@ const MyPageList = ({getPlanData,myPlans,loginState,userId}) => {
     );
 };
 
-export default MyPageList;
+export default MyPage;

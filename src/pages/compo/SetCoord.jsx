@@ -6,23 +6,6 @@ import {getData,check} from '../../modules/setPlace'
 import { connect } from 'react-redux';
 
 const SetCoord = ({getData,check,places}) => {
-    /*const [placeData,setPlaceData]=useState([
-        {
-            address_name: '',
-            category_group_code: '',
-            category_group_name: '',
-            category_name: '',
-            distance: '',
-            id: '',
-            phone: '',
-            place_name: '',
-            place_url: '',
-            road_address_name: '',
-            x: '126.92766444856224',
-            y: '37.38030121417301',
-            checked:false
-          },
-    ]);*/
     const [content,setContent]=useState('');
     const onChange=(event)=>{
         setContent(event.target.value);

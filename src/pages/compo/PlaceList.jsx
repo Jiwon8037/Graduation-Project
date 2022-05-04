@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
 import CheckedItems from './CheckedItems';
 import PlaceItems from './PlaceItems';
 
@@ -8,10 +7,7 @@ const PlaceList = ({placeData,check}) => {
     const checkedList=placeListsPlaceData.filter(place=>place.checked===true);
 
     const sendCheckedList=()=>{
-        const sendData={
-            data:checkedList
-        };
-
+        
         axios.post('/api/makeSchedule',checkedList
         ).then(
             console.log('success')
