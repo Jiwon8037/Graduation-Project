@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Outlet, Link } from 'react-router-dom';
 
 const Layout = ({loginState,userId}) => {
@@ -13,7 +12,7 @@ const Layout = ({loginState,userId}) => {
                 <h3>user id : {userId}</h3>
                 <button><Link to='/login'>login</Link></button>
                 <button><Link to='/register'>register</Link></button>
-                <button><Link to='/mypage'>mypage</Link></button>
+                <button><Link to='/mypageList'>mypage</Link></button>
                 <button><Link to='/makeSchedule'>make schedule</Link></button>
             </header>
             <main>
@@ -22,8 +21,5 @@ const Layout = ({loginState,userId}) => {
         </div>
     );
 };
-const mapStateProps=state=>({
-    loginState:state.auth.loginState,
-    userId:state.auth.userId,
-});
-export default connect(mapStateProps)(Layout);
+
+export default Layout;
