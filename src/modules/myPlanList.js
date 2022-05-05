@@ -6,28 +6,11 @@ const initialState={
     myPlans:[
         {
             userId:'',
-
             start_date:'',
-
             end_date:'',
-
             plan_id:'',
-
             title:'',
-
-            places:[
-                {
-                    id: '',
-                    place_name: '',
-                    road_address_name: '',
-                    x: '',
-                    y: '',
-                    checked:true,
-                    day:''
-                },
-            ],
             place_num:Number,
-            
             liked:Number,
         }
     ]

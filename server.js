@@ -130,7 +130,7 @@ app.post('/getData',(req,res)=>{
 });
 
 let users=[];
-userinfo={
+let userinfo={
     id:'',
     pw:'',
 }
@@ -171,78 +171,59 @@ app.get('/api/mySchedule',(req,res)=>{
     }
 })
 
-app.get('/api/myPageList',(req,res)=>{
+app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId 로 리스트 반환
     const queryData=url.parse(req.url,true).query;
-    console.log(queryData);
     res.json([
         {
             userId:queryData.userId,
-
             start_date:'2022-05-05',
-
             end_date:'2022-05-06',
-
-            plan_id:'1',
-
+            plan_id:'1234',
             title:'hello plans1',
-
-            places:[
-                {
-                    id: '11004596',
-                    place_name: '대부도',
-                    road_address_name: '',
-                    x: '126.596768094707',
-                    y: '37.246138589609',
-                    checked:true,
-                    day:'1'
-                },
-                {
-                    id: '18741257',
-                    place_name: '대부해솔길 1코스',
-                    x: '126.55143895278526',
-                    y: '37.27999142327456',
-                    checked:true,
-                    day:'2'
-                },
-            ],
             place_num:2,
-            
             liked:30,
         },
         {
             userId:queryData.userId,
-
             start_date:'2022-06-05',
-
             end_date:'2022-06-06',
-
-            plan_id:'2',
-
+            plan_id:'2345',
             title:'hello plans2',
-
-            places:[
-                {
-                    id: '8691040',
-                    place_name: '화랑유원지',
-                    x: '126.814341858481',
-                    y: '37.3265944170577',
-                    checked:true,
-                    day:'1'
-                  },
-                  {
-                    id: '26957378',
-                    place_name: '시화방조제',
-                    x: '126.606330737015',
-                    y: '37.3092720051821',
-                    checked:true,
-                    day:'2'
-                  },
-            ],
             place_num:2,
-            
-            liked:23,
-        }
+            liked:25,
+        },
     ]);
+})
+
+app.get('/api/myPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
+    res.json({
+        userId:'',
+        start_date:'2022-05-05',
+        end_date:'2022-05-06',
+        plan_id:'1234',
+        title:'hello plans1',
+        place_num:2,
+        liked:30,
+        places:[
+            {
+                id: '11004596',
+                place_name: '대부도',
+                road_address_name: '',
+                x: '126.596768094707',
+                y: '37.246138589609',
+                checked:true,
+                day:'1'
+            },    
+            {
+                id: '18741257',
+                place_name: '대부해솔길 1코스',
+                x: '126.55143895278526',
+                y: '37.27999142327456',
+                checked:true,
+                day:'2'
+            },
+        ]}
+    );
 })
 
 server.listen(port, ()=> {
