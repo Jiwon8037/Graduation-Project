@@ -9,7 +9,7 @@ import AuthContainer from './containers/AuthContainer';
 import { connect } from 'react-redux';
 import MyPageContainer from './containers/MyPageContainer';
 
-function App({loginState,userId,myPlans}) {
+function App({loginState,userId}) {
   return (
     <div className="App">
       <Routes>
@@ -17,7 +17,7 @@ function App({loginState,userId,myPlans}) {
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetCoord/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
-          <Route path='/myplan/:plan_id' element={<MyPlan myPlans={myPlans}/>}/>
+          <Route path='/myplan/:plan_id' element={<MyPlan userId={userId}/>}/>
           <Route path='/mypage' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>
           <Route path='/register' element={<Register/>}/>
         </Route>
@@ -30,7 +30,6 @@ function App({loginState,userId,myPlans}) {
 const mapStateProps=state=>({
   loginState:state.auth.loginState,
   userId:state.auth.userId,
-  myPlans:state.myPlanList.myPlans
 });
 
 export default connect(mapStateProps)(App);

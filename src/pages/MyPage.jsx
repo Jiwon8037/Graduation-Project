@@ -5,10 +5,9 @@ import { Link } from 'react-router-dom';
 const MyPage = ({getPlanData,myPlans,loginState,userId}) => {
 
     useEffect(()=>{
-        axios.get('api/myPageList',{params:{userId}})
+        axios.get('/api/myPageList',{params:{userId}})
         .then(res=>{
             getPlanData(res.data);
-            //console.log(myPlans);
         })
         .catch(error=>{
             console.log(error);
