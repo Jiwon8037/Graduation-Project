@@ -9,6 +9,10 @@ const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
         pw:'',
     });
 
+    let form = new FormData();
+    form.append("id", loginForm.id);
+    form.append("pw", loginForm.pw)
+
     const onChange=(event)=>{
         setLoginForm({
             ...loginForm,
@@ -16,21 +20,34 @@ const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
         })
     };
    
-    const onClick=()=>{
-        axios.post('/api/login',loginForm
-            ).then(res=>{
-                if(res.data.id===loginForm.id){
-                    isLogIn();
-                    getUserId(res.data.id)
-                }else alert(res.data);
-            }).catch((err)=>{
-                console.log(err);
-            });
-    }
+    const loginButton=()=>{
+        //axios.post('/api/login',form,{withCredentials: true})
+        axios.post('/api/login',loginForm,{withCredentials: true})
+        .then((res)=>{
+            console.log(res.data.isLogin)
+            if(res.data.isLogin===true){
+                isLogIn();
+                getUserId(res.data.id)
+            }else{
+                alert('check id or pw ');
+            }
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    };
+
     const logOut=()=>{
-        isLogOut();
-        getUserId('');
-    }
+        axios.post('/api/logout',null,{withCredentials:true})
+        .then(()=>{
+            isLogOut();
+            getUserId('');
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    };
+
     return (
         <div>
             <h1>login page</h1>
@@ -38,7 +55,7 @@ const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
             <h2>user : {userId}</h2>
             ID : <input name='id' placeholder='id' onChange={onChange}/><br/>
             PW : <input name='pw' placeholder='pw' onChange={onChange}/><br/>
-            <button onClick={onClick}>login button</button>
+            <button onClick={loginButton}>login button</button>
             <button onClick={logOut}>logout button</button>
         </div>
     );
