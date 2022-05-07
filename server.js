@@ -226,6 +226,60 @@ app.get('/api/myPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
     );
 })
 
+app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
+    const queryData=url.parse(req.url,true).query;
+    res.json([
+        {
+            userId:'',
+            start_date:'2222-05-05',
+            end_date:'2222-05-06',
+            plan_id:'9876',
+            title:'public plan 1',
+            place_num:2,
+            liked:30,
+        },
+        {
+            userId:'',
+            start_date:'2222-08-05',
+            end_date:'2222-10-06',
+            plan_id:'9876',
+            title:'public plan 2',
+            place_num:2,
+            liked:25,
+        },
+    ]);
+})
+app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
+    res.json({
+        userId:'',
+            start_date:'2222-08-05',
+            end_date:'2222-10-06',
+            plan_id:'9876',
+            title:'public plan 2',
+        place_num:2,
+        liked:30,
+        places:[
+            {
+                id: '11004596',
+                place_name: '공유 장소 1',
+                road_address_name: '',
+                x: '126.596768094707',
+                y: '37.246138589609',
+                checked:true,
+                day:'1'
+            },    
+            {
+                id: '18741257',
+                place_name: '공유 장소 2',
+                x: '126.55143895278526',
+                y: '37.27999142327456',
+                checked:true,
+                day:'2'
+            },
+        ]}
+    );
+})
+
 server.listen(port, ()=> {
     console.log(port+'포트로 서버 실행');
   });
