@@ -14,6 +14,7 @@ const Layout = ({loginState,userId}) => {
                 <button><Link to='/register'>register</Link></button>
                 <button><Link to='/mypage'>mypage</Link></button>
                 <button><Link to='/makeSchedule'>make schedule</Link></button>
+                <button><Link to='publicpage'>others plan</Link></button>
             </header>
             <main>
                 <Outlet/>
