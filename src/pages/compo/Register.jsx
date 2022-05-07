@@ -21,10 +21,11 @@ const Register = () => {
             alert('check pw!');
         }
         else{
-            axios.post('/api/register',userForm
-            ).then(
+            axios.post('/api/register',userForm ,{withCredentials:true})
+            .then(
                 document.location.href='/login'
-            ).catch((err)=>{
+            )
+            .catch((err)=>{
                 console.log(err);
             })
         }

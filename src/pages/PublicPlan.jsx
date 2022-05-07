@@ -22,7 +22,10 @@ const PublicPlan = ({userId}) => {
     const myPlaceList=[...plan.places];
 
     useEffect(()=>{
-        axios.get('/api/publicPlan',{params:{planId}})
+        axios.get('/api/publicPlan',{
+            params:{planId},
+            withCredentials:true
+        })
         .then(res=>{
             setPlan(res.data);
         })

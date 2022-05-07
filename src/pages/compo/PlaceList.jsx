@@ -8,10 +8,11 @@ const PlaceList = ({placeData,check}) => {
 
     const sendCheckedList=()=>{
         
-        axios.post('/api/makeSchedule',checkedList
-        ).then(
+        axios.post('/api/makeSchedule',checkedList,{withCredentials:true})
+        .then(
             console.log('success')
-        ).catch(error=>{
+        )
+        .catch(error=>{
             console.log(error);
         })
     }

@@ -14,11 +14,12 @@ const SetCoord = ({getData,check,places}) => {
     const searchPlace=()=>{
         const contentData={keyword : content,};
 
-        axios.post('/getData',contentData
-        ).then((res)=>{
+        axios.post('/getData',contentData,{withCredentials:true})
+        .then((res)=>{
             console.log(res.data)
             getData(res.data);
-        }).catch(error=>{
+        })
+        .catch(error=>{
             console.log(error);
         });
     };

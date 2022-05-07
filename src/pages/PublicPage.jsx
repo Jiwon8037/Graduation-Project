@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PublicPage = ({setOthersPlan,othersPlans}) => {
 
     useEffect(()=>{
-        axios.get('/api/publicPageList')
+        axios.get('/api/publicPageList',{withCredentials:true})
         .then(res=>{
             setOthersPlan(res.data);
         })
