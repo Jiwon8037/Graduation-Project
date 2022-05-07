@@ -19,21 +19,19 @@ const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
             [event.target.name]:event.target.value,
         })
     };
-   
+    
     const loginButton=()=>{
         //axios.post('/api/login',form,{withCredentials: true})
         axios.post('/api/login',loginForm,{withCredentials: true})
         .then((res)=>{
-            console.log(res.data.isLogin)
-            if(res.data.isLogin===true){
+            if(res.status===200){
                 isLogIn();
-                getUserId(res.data.id)
-            }else{
-                alert('check id or pw ');
+                sessionStorage.setItem('user',JSON.stringify(res.data.id));
+                getUserId(sessionStorage.getItem('user'));
             }
         })
         .catch((err)=>{
-            console.log(err);
+            alert('check id or pw ');
         })
     };
 
@@ -42,6 +40,7 @@ const Login = ({isLogIn,isLogOut, getUserId, loginState, userId}) => {
         .then(()=>{
             isLogOut();
             getUserId('');
+            sessionStorage.clear();
         })
         .catch((err)=>{
             console.log(err);

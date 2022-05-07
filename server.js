@@ -155,12 +155,10 @@ app.post('/api/login',(req,res)=>{
         }
     }
     if(isLogin===true){
-        res.json({id:loginUser,isLogin:true});
-        console.log(res.statusCode)
+        res.status(200).json({id:loginUser,isLogin:true});
     }
     else {
-        res.json({message: 'not authorized !',isLogin:false});
-        console.log(res.statusCode)
+        res.status(401).json({message: 'not authorized !',isLogin:false});
     }
 });
 
