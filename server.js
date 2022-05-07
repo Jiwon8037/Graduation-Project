@@ -129,7 +129,7 @@ app.post('/getData',(req,res)=>{
     ])
 });
 
-let users=[];
+let users=[{ id: '11', pw: '22' }];
 let userinfo={
     id:'',
     pw:'',
@@ -144,6 +144,7 @@ app.post('/api/register',(req,res)=>{
     res.send('true');
 });
 app.post('/api/login',(req,res)=>{
+    //console.log(req.body)
     let isLogin=false;
     let loginUser;
     for(let i=0; i<users.length; i++){
@@ -154,9 +155,11 @@ app.post('/api/login',(req,res)=>{
         }
     }
     if(isLogin===true){
-        res.json({id:loginUser});
+        res.status(200).json({id:loginUser,isLogin:true});
     }
-    else res.send('check id or pw !');
+    else {
+        res.status(401).json({message: 'not authorized !',isLogin:false});
+    }
 });
 
 let userPlaceList;

@@ -15,9 +15,11 @@ const initialState={
 function auth(state=initialState,action){
     switch(action.type){
         case IS_LOGIN:
-            return {loginState : true};
+            return {...state,
+                loginState : true};
         case IS_LOGOUT:
-            return {loginState:false};
+            return {...state,
+                loginState:false};
         case GET_USER:
             return {...state,
                 userId:state.userId=action.input

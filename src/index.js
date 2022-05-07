@@ -7,9 +7,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import rootReducer from './modules'
+import { getUserId, isLogIn } from './modules/auth';
 
 const store=createStore(rootReducer,composeWithDevTools());
 
+function loadUser(){
+  try{
+    const user=sessionStorage.getItem('user');
+    if(!user){
+      return;
+    }
+    console.log(user);
+    store.dispatch(getUserId(user));
+    store.dispatch(isLogIn());
+  }catch(e){
+    console.log('sessionstorage err');
+  }
+}
+loadUser();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
