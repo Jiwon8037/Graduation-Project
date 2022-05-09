@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import MapRander from './compo/MapRander';
 import axios from 'axios';
+import ResultMapRander from './compo/ResultMapRander';
 
 const PublicPlan = ({userId}) => {
     const params=useParams();
@@ -37,7 +37,7 @@ const PublicPlan = ({userId}) => {
     return (
         <div>
              <h2>plan: {plan.title}</h2>
-             <MapRander placeData={myPlaceList}/>
+             <ResultMapRander placeData={myPlaceList}/>
              {myPlaceList.map(place=>(
                  <div>{place.place_name}</div>
              ))}
