@@ -3,7 +3,6 @@ const {kakao}=window;
 
 const ResultMapRander = ({placeData}) => {
     const mapRandersPlaceData=[...placeData];
-    const checkedList=mapRandersPlaceData.filter(place=>place.checked===true);
 
     useEffect(()=>{
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -15,21 +14,21 @@ const ResultMapRander = ({placeData}) => {
         var map = new kakao.maps.Map(mapContainer, mapOption);
         var linePath=[];
 
-        for(let i=0; i<checkedList.length; i++){
-            const coordinate=new kakao.maps.LatLng(checkedList[i].y,checkedList[i].x);
-            const placeName=checkedList[i].place_name;
+        for(let i=0; i<mapRandersPlaceData.length; i++){
+            const {place_name, x, y}=mapRandersPlaceData[i];
+            const coordinate=new kakao.maps.LatLng(y,x);
 
             linePath.push(coordinate);
 
             const marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
                 position: coordinate, // 마커를 표시할 위치
-                title : placeName, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다 
+                title : place_name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다 
             });
             marker.setMap(map);
             
             // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            var iwContent = `<div style="padding:5px;">${i+1} : ${placeName}<br><a href="https://map.kakao.com/link/map/${placeName},${checkedList[i].y},${checkedList[i].x}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${placeName},${checkedList[i].y},${checkedList[i].x}" style="color:blue" target="_blank">길찾기</a></div>`,
+            var iwContent = `<div style="padding:5px;">${i+1} : ${place_name}<br><a href="https://map.kakao.com/link/map/${place_name},${y},${x}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${place_name},${y},${x}" style="color:blue" target="_blank">길찾기</a></div>`,
                 iwPosition = coordinate; //인포윈도우 표시 위치입니다
             
             var infowindow = new kakao.maps.InfoWindow({
@@ -38,8 +37,6 @@ const ResultMapRander = ({placeData}) => {
             });
             // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
             infowindow.open(map, marker);
-
-            
         };
         
         var polyline = new kakao.maps.Polyline({
