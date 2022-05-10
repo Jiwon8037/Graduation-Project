@@ -10,12 +10,13 @@ import { connect } from 'react-redux';
 import MyPageContainer from './containers/MyPageContainer';
 import PublicPageContainer from './containers/PublicPageContainer';
 import PublicPlan from './pages/PublicPlan';
+import {isLogOut,getUserId} from './modules/auth';
 
-function App({loginState,userId}) {
+function App({isLogOut,getUserId,loginState,userId}) {
   return (
     <div className="App">
       <Routes>
-        <Route element={<Layout loginState={loginState} userId={userId}/>}>
+        <Route element={<Layout loginState={loginState} userId={userId} isLogOut={isLogOut} getUserId={getUserId}/>}>
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetCoord/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
@@ -31,9 +32,12 @@ function App({loginState,userId}) {
   );
 }
 
-const mapStateProps=state=>({
-  loginState:state.auth.loginState,
-  userId:state.auth.userId,
-});
-
-export default connect(mapStateProps)(App);
+export default connect(
+  (state)=>({
+    loginState:state.auth.loginState,
+    userId:state.auth.userId,
+  }),{
+    isLogOut,
+    getUserId
+  }
+)(App);

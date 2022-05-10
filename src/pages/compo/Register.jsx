@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate=useNavigate();
     const [userForm,setUserForm]=useState({
         id:'',
         pw:'',
@@ -23,7 +25,7 @@ const Register = () => {
         else{
             axios.post('/api/register',userForm ,{withCredentials:true})
             .then(
-                document.location.href='/login'
+                navigate('/login')
             )
             .catch((err)=>{
                 console.log(err);
