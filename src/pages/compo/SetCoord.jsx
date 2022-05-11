@@ -2,6 +2,7 @@ import axios from 'axios';
 import React,{useState} from 'react';
 import MapRander from './MapRander';
 import PlaceList from './PlaceList';
+import MakePlan from './MakePlan';
 import {getData,check} from '../../modules/setPlace'
 import { connect } from 'react-redux';
 
@@ -16,7 +17,6 @@ const SetCoord = ({getData,check,places}) => {
 
         axios.post('/getData',contentData,{withCredentials:true})
         .then((res)=>{
-            console.log(res.data)
             getData(res.data);
         })
         .catch(error=>{
@@ -32,6 +32,8 @@ const SetCoord = ({getData,check,places}) => {
                 <button onClick={searchPlace}>검색</button>
             </div>
             <PlaceList placeData={places} check={check}/>
+            <hr/>
+            <MakePlan placeData={places}/>
         </div>
     );
 };
