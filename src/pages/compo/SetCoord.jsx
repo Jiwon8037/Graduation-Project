@@ -33,7 +33,7 @@ const SetCoord = ({getData,check,places}) => {
             </div>
             <PlaceList placeData={places} check={check}/>
             <hr/>
-            <MakePlan placeData={places}/>
+            <MakePlan placeData={places} content={content}/>
         </div>
     );
 };
