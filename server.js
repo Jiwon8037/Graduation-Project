@@ -165,7 +165,8 @@ app.post('/api/login',(req,res)=>{
 let userPlaceList;
 app.post('/api/makeSchedule',(req,res)=>{
     userPlaceList=req.body;
-    console.log(userPlaceList)
+    console.log(userPlaceList);
+    //res.json({complete:true});
 });
 
 app.get('/api/mySchedule',(req,res)=>{
