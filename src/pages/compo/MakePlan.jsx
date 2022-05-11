@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CheckedItems from './CheckedItems';
 import { useNavigate } from 'react-router-dom';
-
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 const MakePlan = ({placeData,content}) => {
     const navigate=useNavigate();
 
     const makePlansPlaceData=[...placeData];
     const checkedList=makePlansPlaceData.filter(place=>place.checked===true);
+    const [startDate,setStartDate]=useState(new Date());
+    const [endDate,setEndDate]=useState(new Date());
     const [sendData,setSendData]=useState({
         public:false,
         title:'',
-        checkedPlace:[]
+        checkedPlace:[],
+        start_date: startDate,
+        end_date: endDate
     });
 
     useEffect(()=>{
@@ -20,21 +25,29 @@ const MakePlan = ({placeData,content}) => {
             checkedPlace:[...checkedList]
         });
     },[checkedList]);
+
     useEffect(()=>{
         setSendData({
             ...sendData,
             title:content
         });
     },[content]);
-        
 
-    const onClick=()=>{
+    useEffect(()=>{
+        setSendData({
+            ...sendData,
+            start_date:startDate,
+            end_date:endDate
+        });
+    },[startDate,endDate]);
+
+    const setPublic=()=>{
         setSendData({
             ...sendData,
             public: !sendData.public
         })
     };
-    const onChange=(e)=>{
+    const setTitle=(e)=>{
         setSendData({
             ...sendData,
             title:e.target.value,
@@ -53,13 +66,15 @@ const MakePlan = ({placeData,content}) => {
 
     return (
         <div className='checkedList' >
-        <button onClick={sendCheckedList}>submit</button><br/> 
-        share plan? : <input type='checkbox' onClick={onClick} checked={sendData.public} readOnly={true}/><br/>
-        plan title : <input type='text' placeholder={content} onChange={onChange}/>
+            <button onClick={sendCheckedList}>submit</button><br/> 
+            start date : <DatePicker dateFormat='yyyy년 MM월 dd일' selected={startDate} onChange={date=>setStartDate(date)}/>
+            end date: <DatePicker dateFormat='yyyy년 MM월 dd일' selected={endDate} onChange={date=>setEndDate(date)}/>
+            share plan? : <input type='checkbox' onClick={setPublic} checked={sendData.public} readOnly={true}/><br/>
+            plan title : <input type='text' placeholder={content} onChange={setTitle}/>
             <div style={{backgroundColor:'lightskyblue'}}>
-                    {checkedList.map(checkedPlace=>(
-                        <CheckedItems placeData={checkedPlace} key={checkedPlace.id}/>
-                    ))}
+                {checkedList.map(checkedPlace=>(
+                    <CheckedItems placeData={checkedPlace} key={checkedPlace.id}/>
+                ))}
             </div>
         </div>
     );
