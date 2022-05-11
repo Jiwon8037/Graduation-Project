@@ -37,4 +37,12 @@ module.exports=function(app){
         target:'http://localhost:8080/',
         changeOrigin:true,
     }))
+    app.use(createProxyMiddleware('/api/logout',{
+        target:'http://localhost:8080/',
+        changeOrigin:true,
+    }))
+    app.use(createProxyMiddleware('/api/register/email',{
+        target:'http://localhost:8080/',
+        changeOrigin:true,
+    }))
 }

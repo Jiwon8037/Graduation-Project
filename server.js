@@ -141,7 +141,14 @@ app.post('/api/register',(req,res)=>{
     }
     users.push(userinfo);
     console.log(users)
-    res.send('true');
+    res.json({success:'success'});
+    //res.json({success:'usedId'});
+    //res.json({success:'emailErr'});
+});
+app.post('/api/register/email',(req,res)=>{
+    console.log(req.body)
+    res.json({success:true});
+    //res.json({success:false});
 });
 app.post('/api/login',(req,res)=>{
     //console.log(req.body)
@@ -155,12 +162,15 @@ app.post('/api/login',(req,res)=>{
         }
     }
     if(isLogin===true){
-        res.status(200).json({id:loginUser,isLogin:true});
+        res.json({loginSuccess:true,id:loginUser});
     }
     else {
-        res.status(401).json({message: 'not authorized !',isLogin:false});
+        res.json({loginSuccess:false});
     }
 });
+app.post('/api/logout',(req,res)=>{
+    res.json({logoutSuccess:true});
+})
 
 let userPlaceList;
 app.post('/api/makeSchedule',(req,res)=>{
