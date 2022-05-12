@@ -16,7 +16,10 @@ let serchKeyword='';
 
 app.use(express.json());
 app.use(express.static('./'));
-
+app.use(express.static(__dirname));
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname+'/build/index.html');
+})
 /*
 app.post('/getData',(req,res)=>{
     serchKeyword=String(req.body.keyword);
