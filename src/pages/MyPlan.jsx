@@ -23,7 +23,7 @@ const MyPlan = ({userId}) => {
 
     useEffect(()=>{
         axios.get('/api/myPlan',{
-            params:{userId,planId},
+            params:{planId},
             withCredentials:true
         })
         .then(res=>{

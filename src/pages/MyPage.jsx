@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import Pagination from './Pagination';
 
-const MyPage = ({getPlanData,myPlans,loginState,userId}) => {
+const MyPage = ({getPlanData,planList,loginState,userId}) => {
+    const [searchParams]=useSearchParams();
+    const page=parseInt(searchParams.get('page'))||1;
 
     useEffect(()=>{
         axios.get('/api/myPageList',{
-            params:{userId}, 
+            params:{page},
             withCredentials:true
         })
         .then(res=>{
@@ -15,18 +18,19 @@ const MyPage = ({getPlanData,myPlans,loginState,userId}) => {
         .catch(error=>{
             console.log(error);
         });
-    },[]); 
-
+    },[page]); 
+    
     return (
         <div>
             <h2>my page</h2>
             <div className='myplanlist'>
-                {myPlans.map(plan=>(
+                {planList.myPlans.map(plan=>(
                     <div>
                         {plan.plan_id} :<Link to={`/myplan/${plan.plan_id}`}>{plan.title}</Link>  {plan.start_date}~{plan.end_date}
                     </div>
                 ))}
             </div>
+            <Pagination pageNum={planList.Totalpage} page={'mypage'}/>
         </div>
     );
 };
