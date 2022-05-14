@@ -82,27 +82,30 @@ app.post('/api/makeSchedule',(req,res)=>{
 });
 
 app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId 로 리스트 반환
-    const queryData=url.parse(req.url,true).query;
-    res.json([
-        {
-            userId:queryData.userId,
-            start_date:'2022-05-05',
-            end_date:'2022-05-06',
-            plan_id:'1234',
-            title:'hello plans1',
-            place_num:2,
-            liked:30,
-        },
-        {
-            userId:queryData.userId,
-            start_date:'2022-06-05',
-            end_date:'2022-06-06',
-            plan_id:'2345',
-            title:'hello plans2',
-            place_num:2,
-            liked:25,
-        },
-    ]);
+    console.log(url.parse(req.url,true).query)
+    res.json(
+        {myPlans:[
+            {
+                userId:'',
+                start_date:'2022-05-05',
+                end_date:'2022-05-06',
+                plan_id:'1234',
+                title:'hello plans1',
+                place_num:2,
+                liked:30,
+            },
+            {
+                userId:'',
+                start_date:'2022-06-05',
+                end_date:'2022-06-06',
+                plan_id:'2345',
+                title:'hello plans2',
+                place_num:2,
+                liked:25,
+            },
+        ],
+        Totalpage:12,
+    });
 })
 
 app.get('/api/myPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
@@ -158,8 +161,8 @@ app.get('/api/myPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
 })
 
 app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
-    const queryData=url.parse(req.url,true).query;
-    res.json([
+    res.json(
+        {othersPlans:[
         {
             userId:'',
             start_date:'2222-05-05',
@@ -178,7 +181,9 @@ app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
             place_num:2,
             liked:25,
         },
-    ]);
+    ],
+    Totalpage:30
+});
 })
 app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
     res.json({

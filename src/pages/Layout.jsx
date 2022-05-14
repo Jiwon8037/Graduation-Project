@@ -26,16 +26,16 @@ const Layout = ({loginState,userId,isLogOut,getUserId}) => {
                 {loginState ? (
                     <div>
                         <button onClick={logOut}>logout</button>
-                        <button><Link to='/mypage'>mypage</Link></button>
+                        <Link to='/mypage'><button>mypage</button></Link>
                     </div>
                     ):(
                     <div>
-                        <button><Link to='/login'>login</Link></button>
-                        <button><Link to='/register'>register</Link></button>
+                        <Link to='/login'><button>login</button></Link>
+                        <Link to='/register'><button>register</button></Link>
                     </div>
                 )}
-                <button><Link to='/makeSchedule'>make schedule</Link></button>
-                <button><Link to='publicpage'>others plan</Link></button>
+                <Link to='/makeSchedule'><button>make schedule</button></Link>
+                <Link to='/publicpage'><button>others plan</button></Link>
             </header>
             <main>
                 <Outlet/>

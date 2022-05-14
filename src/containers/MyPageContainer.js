@@ -3,17 +3,17 @@ import MyPageList from '../pages/MyPage';
 import { getPlanData } from '../modules/myPlanList';
 import { connect } from 'react-redux';
 
-const MyPageContainer = ({getPlanData,myPlans,loginState,userId}) => {
+const MyPageContainer = ({getPlanData,planList,loginState,userId}) => {
     return (
         <div>
-            <MyPageList getPlanData={getPlanData} myPlans={myPlans} loginState={loginState} userId={userId}/>
+            <MyPageList getPlanData={getPlanData} planList={planList} loginState={loginState} userId={userId}/>
         </div>
     );
 };
 
 export default connect(
     (state)=>({
-        myPlans:state.myPlanList.myPlans
+        planList:state.myPlanList.planList
     }),
     {
         getPlanData,
