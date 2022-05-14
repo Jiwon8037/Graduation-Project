@@ -1,5 +1,4 @@
 import {Route,Routes}from'react-router-dom';
-import SetCoord from './pages/compo/SetCoord';
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
@@ -11,6 +10,7 @@ import MyPageContainer from './containers/MyPageContainer';
 import PublicPageContainer from './containers/PublicPageContainer';
 import PublicPlan from './pages/PublicPlan';
 import {isLogOut,getUserId} from './modules/auth';
+import SetPlaceContainer from './containers/SetPlaceContainer';
 
 function App({isLogOut,getUserId,loginState,userId}) {
   return (
@@ -18,7 +18,7 @@ function App({isLogOut,getUserId,loginState,userId}) {
       <Routes>
         <Route element={<Layout loginState={loginState} userId={userId} isLogOut={isLogOut} getUserId={getUserId}/>}>
           <Route index element={<Home/>}/>
-          <Route path='/makeSchedule' element={<SetCoord/>}/>
+          <Route path='/makeSchedule' element={<SetPlaceContainer/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
           <Route path='/myplan/:plan_id' element={<MyPlan userId={userId}/>}/>
           <Route path='/mypage' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>

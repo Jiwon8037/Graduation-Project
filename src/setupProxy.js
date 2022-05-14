@@ -17,10 +17,6 @@ module.exports=function(app){
         target:'http://localhost:8080/',
         changeOrigin:true,
     }))
-    app.use(createProxyMiddleware('/api/mySchedule',{
-        target:'http://localhost:8080/',
-        changeOrigin:true,
-    }))
     app.use(createProxyMiddleware('/api/myPageList',{
         target:'http://localhost:8080/',
         changeOrigin:true,

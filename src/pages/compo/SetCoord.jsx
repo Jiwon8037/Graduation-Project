@@ -3,8 +3,6 @@ import React,{useState} from 'react';
 import MapRander from './MapRander';
 import PlaceList from './PlaceList';
 import MakePlan from './MakePlan';
-import {getData,check} from '../../modules/setPlace'
-import { connect } from 'react-redux';
 
 const SetCoord = ({getData,check,places}) => {
     const [content,setContent]=useState('');
@@ -38,12 +36,4 @@ const SetCoord = ({getData,check,places}) => {
     );
 };
 
-export default connect(
-    (state)=>({
-        places:state.setPlace.places
-    }),
-    {
-        getData,
-        check
-    }
-)(SetCoord);
+export default SetCoord;
