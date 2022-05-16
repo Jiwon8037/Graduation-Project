@@ -13,14 +13,24 @@ const ResultMapRander = ({placeData}) => {
         // 지도를 생성합니다    
         var map = new kakao.maps.Map(mapContainer, mapOption);
         var linePath=[];
+        var wtmCoords=[];
         var bounds=new kakao.maps.LatLngBounds();// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 
         var marker,i;
         for(i=0; i<mapRandersPlaceData.length; i++){
             const {place_name, x, y}=mapRandersPlaceData[i];
             const coordinate=new kakao.maps.LatLng(y,x);
+            const wtm= coordinate.toCoords();
+            var temp;
+
+            if(mapRandersPlaceData[i-1]===undefined){
+                temp='';
+            }else{
+                temp=mapRandersPlaceData[i-1].place_name;
+            };
 
             linePath.push(coordinate);
+            wtmCoords.push(wtm);
 
             marker = new kakao.maps.Marker({
                 map: map, // 마커를 표시할 지도
@@ -32,7 +42,7 @@ const ResultMapRander = ({placeData}) => {
             bounds.extend(linePath[i]);// LatLngBounds 객체에 좌표를 추가합니다
 
             // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-            var iwContent = `<div style="padding:5px;">${i+1} : ${place_name}<br><a href="https://map.kakao.com/link/map/${place_name},${y},${x}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${place_name},${y},${x}" style="color:blue" target="_blank">길찾기</a></div>`,
+            var iwContent = `<div style="padding:5px;">${i+1} : ${place_name}<br><a href="https://map.kakao.com/?map_type=TYPE_MAP&target=car&rt=${',,'+wtmCoords[i].La+','+wtmCoords[i].Ma}&rt1=${temp}&rt2=${place_name}&rtIds=%2C&rtTypes=%2C" style="color:blue" target="_blank">길찾기</a></div>`,
                 iwPosition = coordinate; //인포윈도우 표시 위치입니다
             
             var infowindow = new kakao.maps.InfoWindow({
