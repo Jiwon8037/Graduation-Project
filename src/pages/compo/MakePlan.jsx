@@ -12,7 +12,7 @@ const MakePlan = ({placeData,content}) => {
     const [startDate,setStartDate]=useState(new Date());
     const [endDate,setEndDate]=useState(new Date());
     const [sendData,setSendData]=useState({
-        public:false,
+        isPublic:false,
         title:'',
         checkedPlace:[],
         start_date: startDate,
@@ -44,7 +44,7 @@ const MakePlan = ({placeData,content}) => {
     const setPublic=()=>{
         setSendData({
             ...sendData,
-            public: !sendData.public
+            isPublic: !sendData.isPublic
         })
     };
     const setTitle=(e)=>{
@@ -69,7 +69,7 @@ const MakePlan = ({placeData,content}) => {
             <button onClick={sendCheckedList}>submit</button><br/> 
             start date : <DatePicker dateFormat='yyyy년 MM월 dd일' selected={startDate} onChange={date=>setStartDate(date)}/>
             end date: <DatePicker dateFormat='yyyy년 MM월 dd일' selected={endDate} onChange={date=>setEndDate(date)}/>
-            share plan? : <input type='checkbox' onClick={setPublic} checked={sendData.public} readOnly={true}/><br/>
+            share plan? : <input type='checkbox' onClick={setPublic} checked={sendData.isPublic} readOnly={true}/><br/>
             plan title : <input type='text' placeholder={content} onChange={setTitle}/>
             <div style={{backgroundColor:'lightskyblue'}}>
                 {checkedList.map(checkedPlace=>(
