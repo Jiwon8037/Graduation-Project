@@ -78,7 +78,7 @@ let userPlaceList;
 app.post('/api/makeSchedule',(req,res)=>{
     userPlaceList=req.body;
     console.log(userPlaceList);
-    //res.json({complete:true});
+    res.json({success:false});
 });
 
 app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId 로 리스트 반환

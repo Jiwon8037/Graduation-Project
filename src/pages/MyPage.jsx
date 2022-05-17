@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Pagination from './Pagination';
 
 const MyPage = ({getPlanData,planList,loginState,userId}) => {
+    const navigate=useNavigate();
     const [searchParams]=useSearchParams();
     const page=parseInt(searchParams.get('page'))||1;
 
@@ -13,7 +14,12 @@ const MyPage = ({getPlanData,planList,loginState,userId}) => {
             withCredentials:true
         })
         .then(res=>{
-            getPlanData(res.data);
+            if(res.data.success===true){
+                getPlanData(res.data);
+            }else{
+                alert('로그인 후 이용해주세요');
+                navigate('/login',{replace:true});
+            }
         })
         .catch(error=>{
             console.log(error);

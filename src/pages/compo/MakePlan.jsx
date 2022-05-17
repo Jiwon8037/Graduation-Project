@@ -56,9 +56,14 @@ const MakePlan = ({placeData,content}) => {
 
     const sendCheckedList=()=>{
         axios.post('/api/makeSchedule',sendData,{withCredentials:true})
-        .then(
-            navigate('/mypage',{replace:true})
-        )
+        .then((res)=>{
+            if(res.data.success===true){
+            navigate('/mypage',{replace:true});
+            }else{
+                alert('로그인 후 이용해주세요');
+                navigate('/login',{replace:true});
+            }
+        })
         .catch(error=>{
             console.log(error);
         })
