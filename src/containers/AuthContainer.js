@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../pages/compo/Login';
-import { isLogIn, isLogOut, getUserId } from '../modules/auth';
+import { isLogIn, isLogOut, setUserId } from '../modules/auth';
 
-const AuthContainer = ({isLogIn,isLogOut,getUserId,loginState,userId}) => {
+const AuthContainer = ({isLogIn,isLogOut,setUserId,loginState,userId}) => {
     return (
         <div>
-           <Login isLogIn={isLogIn} isLogOut={isLogOut} getUserId={getUserId} loginState={loginState} userId={userId}/>
+           <Login isLogIn={isLogIn} isLogOut={isLogOut} setUserId={setUserId} loginState={loginState} userId={userId}/>
         </div>
     );
 };
@@ -19,6 +19,6 @@ export default connect(
     {
         isLogIn,
         isLogOut,
-        getUserId,
+        setUserId,
     }
 )(AuthContainer);

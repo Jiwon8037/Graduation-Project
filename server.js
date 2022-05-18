@@ -78,7 +78,7 @@ let userPlaceList;
 app.post('/api/makeSchedule',(req,res)=>{
     userPlaceList=req.body;
     console.log(userPlaceList);
-    //res.json({complete:true});
+    res.json({success:false});
 });
 
 app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId 로 리스트 반환
@@ -105,11 +105,13 @@ app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId
             },
         ],
         Totalpage:12,
+        loginSuccess:true,
     });
 })
 
 app.get('/api/myPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
     res.json({
+        loginSuccess:true,
         userId:'',
         start_date:'2022-05-05',
         end_date:'2022-05-06',
@@ -188,12 +190,13 @@ app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
 app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
     res.json({
         userId:'',
-            start_date:'2222-08-05',
-            end_date:'2222-10-06',
-            plan_id:'9876',
-            title:'public plan 2',
+        start_date:'2222-08-05',
+        end_date:'2222-10-06',
+        plan_id:'9876',
+        title:'public plan 2',
         place_num:2,
         liked:30,
+        loginSuccess:true,
         places:[
             {
                 id: '11004596',

@@ -16,6 +16,7 @@ const initialState={
             }
         ],
         Totalpage:Number,
+        loginSuccess:Boolean,
     }
 }
 

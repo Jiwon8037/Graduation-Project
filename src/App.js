@@ -9,21 +9,21 @@ import { connect } from 'react-redux';
 import MyPageContainer from './containers/MyPageContainer';
 import PublicPageContainer from './containers/PublicPageContainer';
 import PublicPlan from './pages/PublicPlan';
-import {isLogOut,getUserId} from './modules/auth';
+import {setUserId} from './modules/auth';
 import SetPlaceContainer from './containers/SetPlaceContainer';
 
-function App({isLogOut,getUserId,loginState,userId}) {
+function App({setUserId,userId}) {
   return (
     <div className="App">
       <Routes>
-        <Route element={<Layout loginState={loginState} userId={userId} isLogOut={isLogOut} getUserId={getUserId}/>}>
+        <Route element={<Layout userId={userId} setUserId={setUserId}/>}>
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetPlaceContainer/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
-          <Route path='/myplan/:plan_id' element={<MyPlan userId={userId}/>}/>
-          <Route path='/mypage' element={<MyPageContainer loginState={loginState} userId={userId}/>}/>
+          <Route path='/myplan/:plan_id' element={<MyPlan setUserId={setUserId}/>}/>
+          <Route path='/mypage' element={<MyPageContainer setUserId={setUserId}/>}/>
           <Route path='/publicplan/:plan_id' element={<PublicPlan userId={userId}/>}/>
-          <Route path='/publicpage' element={<PublicPageContainer loginState={loginState} userId={userId}/>}/>
+          <Route path='/publicpage' element={<PublicPageContainer/>}/>
           <Route path='/register' element={<Register/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>
@@ -37,7 +37,6 @@ export default connect(
     loginState:state.auth.loginState,
     userId:state.auth.userId,
   }),{
-    isLogOut,
-    getUserId
+    setUserId
   }
 )(App);
