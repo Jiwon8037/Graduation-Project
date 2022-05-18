@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 const MyPage = ({getPlanData,planList,setUserId}) => {
     const navigate=useNavigate();
     const [searchParams]=useSearchParams();
-    const page=parseInt(searchParams.get('page'))||1;
+    const page=(parseInt(searchParams.get('page'))||1)-1;
 
     useEffect(()=>{
         axios.get('/api/myPageList',{
@@ -33,12 +33,12 @@ const MyPage = ({getPlanData,planList,setUserId}) => {
             <h2>my page</h2>
             <div className='myplanlist'>
                 {planList.myPlans.map(plan=>(
-                    <div>
+                    <div key={plan.plan_id}>
                         {plan.plan_id} :<Link to={`/myplan/${plan.plan_id}`}>{plan.title}</Link>  {plan.start_date}~{plan.end_date}
                     </div>
                 ))}
             </div>
-            <Pagination pageNum={planList.Totalpage} page={'mypage'}/>
+            <Pagination maxPage={planList.totalPage} pageName={'mypage'} pageNum={page+1}/>
         </div>
     );
 };

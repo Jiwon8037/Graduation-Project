@@ -39,7 +39,7 @@ const PublicPlan = ({userId}) => {
              <h2>plan: {plan.title}</h2>
              <ResultMapRander placeData={myPlaceList}/>
              {myPlaceList.map(place=>(
-                 <div>{place.place_name}</div>
+                 <div key={place.id}>{place.place_name}</div>
              ))}
         </div>
     );
