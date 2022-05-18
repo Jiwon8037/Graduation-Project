@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ResultMapRander from './compo/ResultMapRander';
 
-const MyPlan = (setUserId) => {
+const MyPlan = ({setUserId}) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
@@ -28,7 +28,7 @@ const MyPlan = (setUserId) => {
             withCredentials:true
         })
         .then(res=>{
-            if(res.data.success===true){
+            if(res.data.loginSuccess===true){
                 setPlan(res.data);
             }else{
                 sessionStorage.removeItem('user');

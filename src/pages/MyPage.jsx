@@ -14,7 +14,7 @@ const MyPage = ({getPlanData,planList,setUserId}) => {
             withCredentials:true
         })
         .then(res=>{
-            if(res.data.success===true){
+            if(res.data.loginSuccess===true){
                 getPlanData(res.data);
             }else{
                 sessionStorage.removeItem('user');

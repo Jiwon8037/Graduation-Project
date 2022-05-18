@@ -15,7 +15,9 @@ const initialState={
                 liked:Number,
             }
         ],
-        Totalpage:Number
+        Totalpage:Number,
+        loginSuccess:Boolean,
+
     }
 }
 
