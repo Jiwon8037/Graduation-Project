@@ -104,7 +104,7 @@ app.get('/api/myPageList',(req,res)=>{//마이페이지 플랜 리스트: userId
                 liked:25,
             },
         ],
-        Totalpage:12,
+        totalPage:3,
         loginSuccess:true,
     });
 })
@@ -184,7 +184,7 @@ app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
             liked:25,
         },
     ],
-    Totalpage:30
+    totalPage:30
 });
 })
 app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
