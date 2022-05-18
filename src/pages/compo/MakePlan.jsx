@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CheckedItems from './CheckedItems';
+import PlaceNameItems from './PlaceNameItems';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -73,7 +73,7 @@ const MakePlan = ({placeData,content}) => {
             plan title : <input type='text' placeholder={content} onChange={setTitle}/>
             <div style={{backgroundColor:'lightskyblue'}}>
                 {checkedList.map(checkedPlace=>(
-                    <CheckedItems placeData={checkedPlace} key={checkedPlace.id}/>
+                    <PlaceNameItems placeData={checkedPlace} key={checkedPlace.id}/>
                 ))}
             </div>
         </div>

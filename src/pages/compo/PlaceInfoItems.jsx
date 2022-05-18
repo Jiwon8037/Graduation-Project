@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlaceItems = ({placeData,check}) => {
+const PlaceInfoItems = ({placeData,check}) => {
     const placeItemsPlaceData={...placeData};
     const {place_name,id,checked}=placeItemsPlaceData;
 
@@ -17,4 +17,4 @@ const PlaceItems = ({placeData,check}) => {
     );
 };
 
-export default PlaceItems;
+export default PlaceInfoItems;
