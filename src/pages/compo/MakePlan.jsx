@@ -4,7 +4,10 @@ import CheckedItems from './CheckedItems';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-const MakePlan = ({placeData,content}) => {
+import { connect } from 'react-redux';
+import { setUserId } from '../../modules/auth';
+
+const MakePlan = ({placeData,content,setUserId}) => {
     const navigate=useNavigate();
 
     const makePlansPlaceData=[...placeData];
@@ -60,6 +63,8 @@ const MakePlan = ({placeData,content}) => {
             if(res.data.success===true){
             navigate('/mypage',{replace:true});
             }else{
+                sessionStorage.removeItem('user');
+                setUserId(sessionStorage.getItem('user'));
                 alert('로그인 후 이용해주세요');
                 navigate('/login',{replace:true});
             }
@@ -85,4 +90,4 @@ const MakePlan = ({placeData,content}) => {
     );
 };
 
-export default MakePlan;
+export default connect(()=>({}),{setUserId})(MakePlan);

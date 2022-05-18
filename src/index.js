@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import rootReducer from './modules'
-import { getUserId, isLogIn } from './modules/auth';
+import { setUserId } from './modules/auth';
 
 const store=createStore(rootReducer,composeWithDevTools());
 
@@ -17,9 +17,7 @@ function loadUser(){
     if(!user){
       return;
     }
-    console.log(user);
-    store.dispatch(getUserId(user));
-    store.dispatch(isLogIn());
+    store.dispatch(setUserId(user));
   }catch(e){
     console.log('sessionstorage err');
   }

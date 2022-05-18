@@ -2,15 +2,12 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Layout = ({loginState,userId,isLogOut,getUserId}) => {
-    let userLoginState=`${loginState}`;
-
+const Layout = ({userId,setUserId}) => {
     const logOut=()=>{
         axios.post('/api/logout',null,{withCredentials:true})
         .then(()=>{
-            isLogOut();
-            getUserId('');
-            sessionStorage.clear();
+            sessionStorage.removeItem('user');
+            setUserId(sessionStorage.getItem('user'));
         })
         .catch((err)=>{
             console.log(err);
@@ -21,9 +18,8 @@ const Layout = ({loginState,userId,isLogOut,getUserId}) => {
         <div>
             <header style={{background:'lightgray',padding:16,fontSize:24}}>
                 <Link to='/'><h1>Title...</h1></Link>
-                <h3>login now : {userLoginState}</h3>
                 <h3>user id : {userId}</h3>
-                {loginState ? (
+                {(userId!==null) ? (
                     <div>
                         <button onClick={logOut}>logout</button>
                         <Link to='/mypage'><button>mypage</button></Link>

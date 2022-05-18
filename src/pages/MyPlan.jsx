@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ResultMapRander from './compo/ResultMapRander';
 
-const MyPlan = ({userId}) => {
+const MyPlan = (setUserId) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
@@ -31,6 +31,8 @@ const MyPlan = ({userId}) => {
             if(res.data.success===true){
                 setPlan(res.data);
             }else{
+                sessionStorage.removeItem('user');
+                setUserId(sessionStorage.getItem('user'));
                 alert('로그인 후 이용해주세요');
                 navigate('/login',{replace:true});
             }
