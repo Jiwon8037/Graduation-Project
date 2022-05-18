@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ResultMapRander from './compo/ResultMapRander';
 import PlaceNameList from './compo/PlaceNameList';
 
-const MyPlan = () => {
+
+const MyPlan = ({setUserId}) => {
+    const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
     const [plan,setPlan]=useState({
@@ -28,7 +30,14 @@ const MyPlan = () => {
             withCredentials:true
         })
         .then(res=>{
-            setPlan(res.data);
+            if(res.data.loginSuccess===true){
+                setPlan(res.data);
+            }else{
+                sessionStorage.removeItem('user');
+                setUserId(sessionStorage.getItem('user'));
+                alert('로그인 후 이용해주세요');
+                navigate('/login',{replace:true});
+            }
         })
         .catch(error=>{
             console.log(error);
