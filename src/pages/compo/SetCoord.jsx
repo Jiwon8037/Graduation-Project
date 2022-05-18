@@ -23,15 +23,19 @@ const SetCoord = ({getData,check,places}) => {
     };
  
     return (
-        <div>
-            <MapRander placeData={places}></MapRander>
-            <div className="option">
+        <div style={{display:'flex'}}>
+            <div style={{width:'20%'}}>
+                장소 목록
+                <PlaceList placeData={places} check={check} />
+            </div>
+            <div className="option" style={{width:'60%'}}>
                 <input type="text" id="content" placeholder="검색 장소" onChange={onChange}/>
                 <button onClick={searchPlace}>검색</button>
+                <MapRander placeData={places}></MapRander>
             </div>
-            <PlaceList placeData={places} check={check}/>
-            <hr/>
-            <MakePlan placeData={places} content={content}/>
+            <div style={{width:'20%'}}>
+                <MakePlan placeData={places} content={content}/>
+            </div>
         </div>
     );
 };
