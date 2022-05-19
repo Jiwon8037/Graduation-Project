@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckedItems from './PlaceNameItems';
+import PlaceNameItems from './PlaceNameItems';
 
 const PlaceNameList = ({placeData}) => {
     const placeNameListsData=[...placeData];
@@ -7,7 +7,7 @@ const PlaceNameList = ({placeData}) => {
     return (
         <div>
             {placeNameListsData.map(place=>(
-                <CheckedItems placeData={place} key={place.id}/>
+                <PlaceNameItems placeData={place} key={place.id}/>
             ))}
         </div>
     );
