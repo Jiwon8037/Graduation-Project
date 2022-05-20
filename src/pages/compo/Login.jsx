@@ -25,7 +25,7 @@ const Login = ({setUserId, userId}) => {
         axios.post('/api/login',loginForm,{withCredentials: true})
         .then((res)=>{
             if(res.data.loginSuccess===true){
-                sessionStorage.setItem('user',JSON.stringify(res.data.id));
+                sessionStorage.setItem('user',String(res.data.id));
                 setUserId(sessionStorage.getItem('user'));
                 navigate('/',{replace: true});
             }else{

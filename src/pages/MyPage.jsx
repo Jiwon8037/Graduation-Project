@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Pagination from './Pagination';
+import PlanList from './PlanList';
 
 const MyPage = ({getPlanData,planList,setUserId}) => {
     const navigate=useNavigate();
@@ -31,13 +32,7 @@ const MyPage = ({getPlanData,planList,setUserId}) => {
     return (
         <div>
             <h2>my page</h2>
-            <div className='myplanlist'>
-                {planList.myPlans.map(plan=>(
-                    <div key={plan.plan_id}>
-                        {plan.plan_id} :<Link to={`/myplan/${plan.plan_id}`}>{plan.title}</Link>  {plan.start_date}~{plan.end_date}
-                    </div>
-                ))}
-            </div>
+            <PlanList pageName={'myPlan'} planList={planList.myPlans}/>
             <Pagination maxPage={planList.totalPage} pageName={'mypage'} pageNum={page+1}/>
         </div>
     );
