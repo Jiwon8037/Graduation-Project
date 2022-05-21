@@ -56,6 +56,7 @@ const MyPlan = ({setUserId}) => {
                     <ResultMapRander placeData={myPlaceList}/>
                 </div>
             </div>
+            <button onClick={()=>{navigate(`/editPlan/${planId}`)}}>일정 수정</button>
         </div>
     );
 };

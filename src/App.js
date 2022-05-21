@@ -11,6 +11,8 @@ import PublicPageContainer from './containers/PublicPageContainer';
 import PublicPlan from './pages/PublicPlan';
 import {setUserId} from './modules/auth';
 import SetPlaceContainer from './containers/SetPlaceContainer';
+import SetPlanContainer from './containers/SetPlanContainer';
+import DndContainer from './containers/DndContainer';
 
 function App({setUserId,userId}) {
   return (
@@ -20,7 +22,8 @@ function App({setUserId,userId}) {
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetPlaceContainer/>}/>
           <Route path='/login' element={<AuthContainer/>}/>
-          <Route path='/myplan/:plan_id' element={<MyPlan setUserId={setUserId}/>}/>
+          <Route path='/myplan/:plan_id' element={<SetPlanContainer setUserId={setUserId} ComponentName={MyPlan}/>}/>
+          <Route path='/editPlan/:plan_id' element={<SetPlanContainer setUserId={setUserId} ComponentName={DndContainer}/>}/>
           <Route path='/mypage' element={<MyPageContainer setUserId={setUserId}/>}/>
           <Route path='/publicplan/:plan_id' element={<PublicPlan userId={userId}/>}/>
           <Route path='/publicpage' element={<PublicPageContainer/>}/>
