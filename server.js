@@ -189,7 +189,7 @@ app.get('/api/publicPageList',(req,res)=>{//공유게시판 플랜 리스트
 })
 app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반환
     res.json({
-        userId:'',
+        userId:'11',
         start_date:'2222-08-05',
         end_date:'2222-10-06',
         plan_id:'9876',
@@ -217,6 +217,9 @@ app.get('/api/publicPlan',(req,res)=>{//상세플랜 : planId 로 검색 후 반
             },
         ]}
     );
+})
+app.get('/api/publicPlan/liked',(req,res)=>{
+    res.json('overlap')
 })
 
 server.listen(port, ()=> {
