@@ -25,24 +25,12 @@ const MakePlan = ({placeData,content,setUserId}) => {
     useEffect(()=>{
         setSendData({
             ...sendData,
-            checkedPlace:[...checkedList]
-        });
-    },[checkedList]);
-
-    useEffect(()=>{
-        setSendData({
-            ...sendData,
-            title:content
-        });
-    },[content]);
-
-    useEffect(()=>{
-        setSendData({
-            ...sendData,
+            title:content,
+            checkedPlace:[...checkedList],
             start_date:startDate,
             end_date:endDate
         });
-    },[startDate,endDate]);
+    },[checkedList,content,startDate,endDate]);
 
     const setPublic=()=>{
         setSendData({
