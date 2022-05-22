@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import ResultMapRander from './compo/ResultMapRander';
-import PlaceNameList from './compo/PlaceNameList';
+import ResultMapRander from '../../components/ResultMapRander';
+import PlaceNameList from '../../components/PlaceNameList';
 
 
 const MyPlan = ({setUserId}) => {

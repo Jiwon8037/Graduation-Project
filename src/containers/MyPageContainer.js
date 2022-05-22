@@ -1,12 +1,12 @@
 import React from 'react';
-import MyPageList from '../pages/MyPage';
+import MyPage from '../pages/mypage/MyPage';
 import { getPlanData } from '../modules/myPlanList';
 import { connect } from 'react-redux';
 
 const MyPageContainer = ({getPlanData,planList,setUserId}) => {
     return (
         <div>
-            <MyPageList getPlanData={getPlanData} planList={planList} setUserId={setUserId}/>
+            <MyPage getPlanData={getPlanData} planList={planList} setUserId={setUserId}/>
         </div>
     );
 };

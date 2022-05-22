@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import Pagination from './Pagination';
-import PlanList from './PlanList';
+import Pagination from '../../components/Pagination';
+import PlanList from '../../components/PlanList';
 
 const MyPage = ({getPlanData,planList,setUserId}) => {
     const navigate=useNavigate();

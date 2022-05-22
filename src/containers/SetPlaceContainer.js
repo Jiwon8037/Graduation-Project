@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SetCoord from '../pages/compo/SetCoord';
+import SetCoord from '../pages/SetCoord';
 import { getData,check } from '../modules/setPlace';
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import PublicPage from '../pages/PublicPage';
+import PublicPage from '../pages/publicpage/PublicPage';
 import {setOthersPlan} from '../modules/othersPlanList';
 import { connect } from 'react-redux';
 

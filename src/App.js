@@ -1,14 +1,14 @@
 import {Route,Routes}from'react-router-dom';
 import Home from './pages/Home';
-import Layout from './pages/Layout';
+import Header from './pages/Header';
 import NotFound from './pages/NotFound';
-import MyPlan from './pages/MyPlan';
-import Register from './pages/compo/Register'
+import MyPlan from './pages/mypage/MyPlan';
+import Register from './pages/auth/Register'
 import AuthContainer from './containers/AuthContainer';
 import { connect } from 'react-redux';
 import MyPageContainer from './containers/MyPageContainer';
 import PublicPageContainer from './containers/PublicPageContainer';
-import PublicPlan from './pages/PublicPlan';
+import PublicPlan from './pages/publicpage/PublicPlan';
 import {setUserId} from './modules/auth';
 import SetPlaceContainer from './containers/SetPlaceContainer';
 import SetPlanContainer from './containers/SetPlanContainer';
@@ -18,7 +18,7 @@ function App({setUserId,userId}) {
   return (
     <div className="App">
       <Routes>
-        <Route element={<Layout userId={userId} setUserId={setUserId}/>}>
+        <Route element={<Header userId={userId} setUserId={setUserId}/>}>
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetPlaceContainer/>}/>
           <Route path='/login' element={<AuthContainer/>}/>

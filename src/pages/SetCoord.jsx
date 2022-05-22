@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React,{useState} from 'react';
-import MapRander from './MapRander';
-import PlaceInfoList from './PlaceInfoList';
+import MapRander from '../components/MapRander';
+import PlaceInfoList from '../components/PlaceInfoList';
 import MakePlan from './MakePlan';
 
 const SetCoord = ({getData,check,places}) => {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import PlaceNameItems from './PlaceNameItems';
+import PlaceNameItems from '../components/PlaceNameItems';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
-import { setUserId } from '../../modules/auth';
+import { setUserId } from '../modules/auth';
 
 const MakePlan = ({placeData,content,setUserId}) => {
     const navigate=useNavigate();

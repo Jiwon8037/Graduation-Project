@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Layout = ({userId,setUserId}) => {
+const Header = ({userId,setUserId}) => {
     const logOut=()=>{
         axios.post('/api/logout',null,{withCredentials:true})
         .then(()=>{
@@ -40,4 +40,4 @@ const Layout = ({userId,setUserId}) => {
     );
 };
 
-export default Layout;
+export default Header;

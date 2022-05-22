@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Login from '../pages/compo/Login';
+import Login from '../pages/auth/Login';
 import { isLogIn, isLogOut, setUserId } from '../modules/auth';
 
 const AuthContainer = ({isLogIn,isLogOut,setUserId,loginState,userId}) => {

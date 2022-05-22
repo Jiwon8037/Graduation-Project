@@ -1,7 +1,7 @@
 import React from 'react';
 import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
-import PlanEdit from '../pages/PlanEdit';
+import PlanEdit from '../pages/mypage/PlanEdit';
 
 const DndContainer = ({setUserId,planData}) => {
     return (

@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import update from 'immutability-helper';
 import DndPlace from './DndPlace';
-import ResultMapRander from './compo/ResultMapRander';
+import ResultMapRander from '../../components/ResultMapRander';
 
 const PlanEdit = ({setUserId,planData}) => {
     const [placeList,setPlaceList]=useState([...planData.places]);

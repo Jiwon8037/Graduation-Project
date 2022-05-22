@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Pagination from './Pagination';
-import PlanList from './PlanList';
+import Pagination from '../../components/Pagination';
+import PlanList from '../../components/PlanList';
 
 const PublicPage = ({setOthersPlan,planList}) => {
     const [searchParams]=useSearchParams();
