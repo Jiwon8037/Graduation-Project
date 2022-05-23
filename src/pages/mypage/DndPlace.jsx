@@ -8,7 +8,7 @@ const style = {
     backgroundColor: 'white',
     cursor: 'move',
   }
-const DndPlace = ({id,index,text,movePlace}) => {
+const DndPlace = ({id,index,text,movePlace,removePlanPlace}) => {
     const ref=useRef(null);
 
     const[{handlerId},drop]=useDrop({
@@ -60,6 +60,7 @@ const DndPlace = ({id,index,text,movePlace}) => {
     return (
         <div ref={ref} style={{ ...style, opacity }} data-handler-id={handlerId}>
             {text}
+            <button onClick={()=>{removePlanPlace(id); console.log(id)}}>x</button>
         </div>
     );
 };

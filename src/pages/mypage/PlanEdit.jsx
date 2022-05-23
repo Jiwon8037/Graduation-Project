@@ -6,13 +6,28 @@ import DatePicker from 'react-datepicker';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const PlanEdit = ({setUserId,planData}) => {
+const PlanEdit = ({planData,removePlanPlace}) => {
     const navigate=useNavigate();
     const parmas=useParams().plan_id;
     const [sendData,setSendData]=useState({...planData});
-    const [placeList,setPlaceList]=useState([...sendData.places]);
-    const [startDate,setStartDate]=useState(new Date(sendData.start_date));
-    const [endDate,setEndDate]=useState(new Date(sendData.end_date));
+    const [placeList,setPlaceList]=useState([]);
+    const [startDate,setStartDate]=useState(new Date(planData.start_date));
+    const [endDate,setEndDate]=useState(new Date(planData.end_date));
+
+    useEffect(()=>{
+        setPlaceList([
+            ...planData.places
+        ]);
+    },[planData]);
+
+    useEffect(()=>{
+        setSendData({
+            ...sendData,
+            places:placeList,
+            start_date:startDate,
+            end_date:endDate
+        });
+    },[startDate, endDate, placeList]);
 
     const movePlace=useCallback((dragIndex,hoverIndex)=>{
         setPlaceList((prevPlaceList)=>
@@ -24,15 +39,6 @@ const PlanEdit = ({setUserId,planData}) => {
             }),
         )
     },[]);
-
-    useEffect(()=>{
-        setSendData({
-            ...sendData,
-            places:placeList,
-            start_date:startDate,
-            end_date:endDate
-        });
-    },[startDate,endDate,placeList]);
     
     const setTitle=(e)=>{
         setSendData({
@@ -72,6 +78,7 @@ const PlanEdit = ({setUserId,planData}) => {
                             id={place.id} 
                             text={place.place_name}
                             movePlace={movePlace}
+                            removePlanPlace={removePlanPlace}
                         />
                     ))}
                 </div>
@@ -89,4 +96,4 @@ const PlanEdit = ({setUserId,planData}) => {
     )
 };
 
-export default PlanEdit;
+export default React.memo(PlanEdit);
