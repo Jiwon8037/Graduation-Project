@@ -6,12 +6,13 @@ const initialState={
     planData:{
         loginSuccess:Boolean,
         userId:String,
-        start_date:String,
-        end_date:String,
+        start_date:new Date(),
+        end_date:new Date(),
         plan_id:String,
         title:String,
         place_num:Number,
         liked:Number,
+        isPublic:Boolean,
         places:[
             {
                 id: String,

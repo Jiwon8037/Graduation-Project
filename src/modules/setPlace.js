@@ -12,14 +12,14 @@ const initialState={
             category_group_name: '',
             category_name: '',
             distance: '',
-            id: '123456',
+            id: String,
             phone: '',
-            place_name: '성결대',
+            place_name: String,
             place_url: '',
             road_address_name: '',
-            x: '126.92766444856224',
-            y: '37.38030121417301',
-            checked:false
+            x: String,
+            y: String,
+            checked:Boolean
         },
     ],
 }
