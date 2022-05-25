@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setPlanData } from '../modules/setPlan';
+import { setPlanData,removePlanPlace } from '../modules/setPlan';
 import axios from 'axios';
 
-const SetPlanContainer = ({setPlanData,planData,setUserId,ComponentName}) => {
+const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,ComponentName}) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
@@ -30,7 +30,7 @@ const SetPlanContainer = ({setPlanData,planData,setUserId,ComponentName}) => {
 
     return (
         <div>
-            <ComponentName setUserId={setUserId}  planData={planData}/>
+            <ComponentName setUserId={setUserId}  planData={planData} removePlanPlace={removePlanPlace}/>
         </div>
     );
 }
@@ -40,5 +40,6 @@ export default connect(
     }),
     {
         setPlanData,
+        removePlanPlace,
     }
 )(SetPlanContainer);

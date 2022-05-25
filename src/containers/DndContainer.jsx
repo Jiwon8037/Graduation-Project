@@ -3,11 +3,11 @@ import { DndProvider } from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import PlanEdit from '../pages/mypage/PlanEdit';
 
-const DndContainer = ({setUserId,planData}) => {
+const DndContainer = ({setUserId,planData,removePlanPlace}) => {
     return (
         <div>
             <DndProvider backend={HTML5Backend}>
-                <PlanEdit setUserId={setUserId} planData={planData}/>
+                <PlanEdit setUserId={setUserId} planData={planData} removePlanPlace={removePlanPlace}/>
             </DndProvider>
         </div>
     );
