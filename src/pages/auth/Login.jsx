@@ -1,6 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import Button from '../../components/common/Button';
+
+const StyledLoginBlock=styled.div`
+    h3{
+        margin: 0;
+        color:black;
+        margin-bottom: 1px;
+    }
+`;
+const StyledInput=styled.input`
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid;
+    padding-bottom: 0.5rem;
+    outline: none;
+    width: 100%;
+    &:focus{
+        color:$oc-teal-7;
+        border-bottom: 1px solid;
+    }
+    &+&{
+        margin-top:1rem;
+    }
+`;
 
 const Login = ({setUserId, userId}) => {
     const navigate=useNavigate();
@@ -38,13 +63,12 @@ const Login = ({setUserId, userId}) => {
     };
 
     return (
-        <div>
-            <h1>login page</h1>
-            <h2>user : {userId}</h2>
-            ID : <input name='id' placeholder='id' onChange={onChange}/><br/>
-            PW : <input name='pw' placeholder='pw' onChange={onChange}/><br/>
-            <button onClick={loginButton}>login button</button>
-        </div>
+        <StyledLoginBlock>
+            <h3>로그인</h3>
+            <StyledInput name='id' placeholder='ID' onChange={onChange}/>
+            <StyledInput name='pw' placeholder='PW' onChange={onChange} type='password'/>
+            <Button onClick={loginButton}>로그인</Button>
+        </StyledLoginBlock>
     );
 };
 
