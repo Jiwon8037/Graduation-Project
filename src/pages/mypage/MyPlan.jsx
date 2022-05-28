@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import ResultMapRander from '../../components/ResultMapRander';
 import PlaceNameList from '../../components/PlaceNameList';
+import DayParsing from '../../components/DayParsing';
 
 
 const MyPlan = ({planData}) => {
@@ -19,7 +19,7 @@ const MyPlan = ({planData}) => {
                     <PlaceNameList placeData={myPlaceList}/>
                 </div>
                 <div style={{width:'70%'}}>
-                    <ResultMapRander placeData={myPlaceList}/>
+                    <DayParsing placeData={myPlaceList}/>
                 </div>
             </div>
             <button onClick={()=>{navigate(`/editPlan/${planId}`)}}>일정 수정</button>
