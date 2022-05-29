@@ -1,38 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import Button from '../../components/common/Button';
+import Input from '../../components/common/Input';
 
-const StyledRegisterBlock=styled.div`
-    h3{
-        margin: 0;
-        color:black;
-        margin-bottom: 1px;
-    }
-    .success{
-        background: lightgreen;
-        
-    }
-    .fail{
-        background: red;
-    }
-`;
-const StyledInput=styled.input`
-    font-size: 1rem;
-    border: none;
-    border-bottom: 1px solid;
-    padding-bottom: 0.5rem;
-    outline: none;
-    width: 100%;
-    &:focus{
-        color:$oc-teal-7;
-        border-bottom: 1px solid;
-    }
-    &+&{
-        margin-top:1rem;
-    }
-`;
 const Register = () => {
     const navigate=useNavigate();
     const [userForm,setUserForm]=useState({
@@ -103,11 +74,11 @@ const Register = () => {
     };
 
     return (
-        <StyledRegisterBlock>
+        <>
             <h3>회원 가입</h3>
-            <StyledInput name='id' placeholder='E-MAIL' onChange={onChangeUserForm}/>
-            <StyledInput name='pw' placeholder='PW' onChange={onChangeUserForm} type='password'/>
-            <StyledInput name='pwCheck' placeholder='PW 확인' onChange={onChangeUserForm} type='password'/>
+            <Input name='id' placeholder='E-MAIL' onChange={onChangeUserForm}/>
+            <Input name='pw' placeholder='PW' onChange={onChangeUserForm} type='password'/>
+            <Input name='pwCheck' placeholder='PW 확인' onChange={onChangeUserForm} type='password'/>
             {(pw===pwCheck) ? (
                 <div className='success'>비밀번호가 일치합니다.</div>
                 ):(
@@ -117,11 +88,11 @@ const Register = () => {
             {mail.isEmailAuth && (
                 <div>
                     <h3>이메일 인증번호 입력</h3>
-                    <StyledInput type='text' placeholder='인증번호를 입력해주세요.' onChange={onChangeEmail}/>
+                    <Input type='text' placeholder='인증번호를 입력해주세요.' onChange={onChangeEmail}/>
                     <Button onClick={sendEmailAuth}>send AuthauthNum</Button>
                 </div>
             )}
-        </StyledRegisterBlock>
+        </>
     );
 };
 

@@ -1,11 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-const StyledButton=styled.button`
+const buttonStyle=css`
+    border: solid 2px;
+    margin: 1px;
     border-radius: 6px;
     font-size: 1rem;
     font-weight: bold;
-    padding: 1px 4px;
+    padding: 4px;
     color:black;
     outline: none;
     cursor: pointer;
@@ -16,10 +19,18 @@ const StyledButton=styled.button`
         border-color: white;
     }
 `;
+const StyledButton=styled.button`
+    ${buttonStyle}  
+`;
+const StyledLink=styled(Link)`
+    ${buttonStyle}
+`;
 const Button = (props) => {
-    return (
+    return props.to ? (
+        <StyledLink {...props}/>
+    ):(
         <StyledButton {...props}/>
-    );
+    )
 };
 
 export default Button;

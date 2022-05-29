@@ -12,7 +12,7 @@ const StyledAuthTemplate=styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 5%;
 `;
 const WhiteBox=styled.div`
     .loga-area{
@@ -27,6 +27,19 @@ const WhiteBox=styled.div`
     width: 360px;
     background: white;
     border-radius: 6px;
+
+    h3{
+        margin: 0;
+        color:black;
+        margin-bottom: 1px;
+    }
+    .success{
+        background: lightgreen;
+        
+    }
+    .fail{
+        background: red;
+    }
 `;
 
 const AuthTemplate = ({children}) => {
