@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/common/Button';
+import Input from '../../components/common/Input';
 
 const Login = ({setUserId, userId}) => {
     const navigate=useNavigate();
@@ -38,13 +40,12 @@ const Login = ({setUserId, userId}) => {
     };
 
     return (
-        <div>
-            <h1>login page</h1>
-            <h2>user : {userId}</h2>
-            ID : <input name='id' placeholder='id' onChange={onChange}/><br/>
-            PW : <input name='pw' placeholder='pw' onChange={onChange}/><br/>
-            <button onClick={loginButton}>login button</button>
-        </div>
+        <>
+            <h3>로그인</h3>
+            <Input name='id' placeholder='ID' onChange={onChange}/>
+            <Input name='pw' placeholder='PW' onChange={onChange} type='password'/>
+            <Button onClick={loginButton}>로그인</Button>
+        </>
     );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import axios from 'axios';
+import Button from '../components/common/Button';
+import HeaderTemplate from './HeaderTemplate';
 
 const Header = ({userId,setUserId}) => {
     const logOut=()=>{
@@ -15,28 +17,32 @@ const Header = ({userId,setUserId}) => {
     };
 
     return (
-        <div>
-            <header style={{background:'lightgray',padding:16,fontSize:24}}>
-                <Link to='/'><h1>Title...</h1></Link>
-                <h3>user id : {userId}</h3>
-                {(userId!==null) ? (
-                    <div>
-                        <button onClick={logOut}>logout</button>
-                        <Link to='/mypage'><button>mypage</button></Link>
-                    </div>
-                    ):(
-                    <div>
-                        <Link to='/login'><button>login</button></Link>
-                        <Link to='/register'><button>register</button></Link>
-                    </div>
-                )}
-                <Link to='/makeSchedule'><button>make schedule</button></Link>
-                <Link to='/publicpage'><button>others plan</button></Link>
-            </header>
+        <>
+            <HeaderTemplate>
+                <div className='logo'>
+                    <Link to='/'><h1>Viva ra Trip</h1></Link>
+                    <h4>{userId}</h4>
+                </div>
+                <div className='buttons'>
+                    {(userId!==null) ? (
+                        <>
+                            <Button onClick={logOut}>로그아웃</Button>
+                            <Button to='/mypage'>마이페이지</Button>
+                        </>
+                        ):(
+                        <>
+                            <Button to='/login'>로그인</Button>
+                            <Button to='/register'>회원가입</Button>
+                        </>
+                    )}
+                    <Button to='/makeSchedule'>일정 만들기</Button>
+                    <Button to='/publicpage'>다른사람의 일정</Button>
+                </div>
+            </HeaderTemplate>
             <main>
                 <Outlet/>
             </main>
-        </div>
+        </>
     );
 };
 

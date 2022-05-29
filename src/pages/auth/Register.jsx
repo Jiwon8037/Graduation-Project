@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/common/Button';
+import Input from '../../components/common/Input';
 
 const Register = () => {
     const navigate=useNavigate();
@@ -72,19 +74,25 @@ const Register = () => {
     };
 
     return (
-        <div>
-            ID : <input name='id' placeholder='id' onChange={onChangeUserForm}/><br/>
-            PW : <input name='pw' placeholder='pw' onChange={onChangeUserForm}/><br/>
-            PW Check : <input name='pwCheck' placeholder='pw check' onChange={onChangeUserForm}/>
-            {(pw===pwCheck) ? (<div>pw ok</div>):(<div>pw inconsistency</div>)}
-            <button onClick={sendUserForm}>register button</button><hr/>
-            {mail.isEmailAuth ? (
+        <>
+            <h3>회원 가입</h3>
+            <Input name='id' placeholder='E-MAIL' onChange={onChangeUserForm}/>
+            <Input name='pw' placeholder='PW' onChange={onChangeUserForm} type='password'/>
+            <Input name='pwCheck' placeholder='PW 확인' onChange={onChangeUserForm} type='password'/>
+            {(pw===pwCheck) ? (
+                <div className='success'>비밀번호가 일치합니다.</div>
+                ):(
+                <div className='fail'>비밀번호가 일치하지 않습니다.</div>
+            )}
+            <Button onClick={sendUserForm}>register button</Button><hr/>
+            {mail.isEmailAuth && (
                 <div>
-                    email auth : <input type='text' onChange={onChangeEmail}/>
-                    <button onClick={sendEmailAuth}>send AuthauthNum</button>
-                </div> ):(<div/>)
-            }
-        </div>
+                    <h3>이메일 인증번호 입력</h3>
+                    <Input type='text' placeholder='인증번호를 입력해주세요.' onChange={onChangeEmail}/>
+                    <Button onClick={sendEmailAuth}>send AuthauthNum</Button>
+                </div>
+            )}
+        </>
     );
 };
 
