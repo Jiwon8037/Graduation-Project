@@ -23,11 +23,7 @@ const DayParsing = ({placeData}) => {
         const temp=Number(e.target.value);
         setSelectedDay(temp+1);
     };
-    if(day===undefined){
-        return(
-            <ResultMapRander placeData={mapRandersPlaceData}/>        
-        );
-    }
+    
     return (
         <div>
             <button onClick={selectDay} value={-1}>전체보기</button>

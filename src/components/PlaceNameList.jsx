@@ -5,7 +5,7 @@ const PlaceNameList = ({placeData}) => {
     const placeNameListsData=[...placeData];
 
     return (
-        <div>
+        <div className='placeList'>
             {placeNameListsData.map(place=>(
                 <PlaceNameItems placeData={place} key={place.id}/>
             ))}

@@ -79,9 +79,7 @@ const ResultMapRander = ({placeData}) => {
     },[placeData]);
 
     return (
-        <div>
-            <div id="map" style={{width:'100%', height:'500px'}}></div>
-        </div>
+        <div id="map" style={{width:'100%', height:'500px'}}></div>
     );
 };
 export default ResultMapRander;

@@ -18,7 +18,7 @@ const Pagination = ({maxPage,pageName,pageNum}) => {
     }
     
     return (
-        <div>
+        <div className='pagination'>
             <Link to={`/${pageName}?page=1`}>처음 </Link>
             {pageArr.map((num,i)=>
                 <Link to={`/${pageName}?page=${i+pageNum}`} key={i+pageNum}>
