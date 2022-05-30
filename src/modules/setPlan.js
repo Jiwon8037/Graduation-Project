@@ -8,11 +8,11 @@ const initialState={
     planData:{
         loginSuccess:Boolean,
         userId:String,
-        start_date:new Date(),
-        end_date:new Date(),
+        start_date:Date,
+        end_date:Date,
+        total_days:Number,
         plan_id:String,
         title:String,
-        place_num:Number,
         liked:Number,
         isPublic:Boolean,
         places:[
@@ -22,7 +22,7 @@ const initialState={
                 x: String,
                 y: String,
                 checked:Boolean,
-                day:String
+                day:Number
             },
         ]
     }
