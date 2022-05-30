@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import ResultMapRander from './ResultMapRander';
 
-const DayParsing = ({placeData}) => {
+const DayParsing = ({placeData,totalDays}) => {
     const mapRandersPlaceData=[...placeData];
     const DayArr=[];
     DayArr[0]=[...placeData];
-    let day=Number(mapRandersPlaceData[mapRandersPlaceData.length-1].day);
+    let day=totalDays;
     
     if(isNaN(day)){
         day=0;
     };
 
     for(let i=1; i<=day; i++){
-        DayArr[i]=mapRandersPlaceData.filter(place=>place.day===String(i));
+        DayArr[i]=mapRandersPlaceData.filter(place=>place.day===i);
     };
     
     const [selectedDay,setSelectedDay]=useState(0);

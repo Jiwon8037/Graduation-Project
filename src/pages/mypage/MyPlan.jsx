@@ -19,7 +19,8 @@ const MyPlan = ({planData}) => {
                     <PlaceNameList placeData={myPlaceList}/>
                 </div>
                 <div className='mapRander'>
-                    <DayParsing placeData={myPlaceList}/>
+                    <DayParsing placeData={myPlaceList} totalDays={planData.total_days}/>
+
                 </div>
             </div>
             <button onClick={()=>{navigate(`/editPlan/${planId}`)}}>일정 수정</button>
