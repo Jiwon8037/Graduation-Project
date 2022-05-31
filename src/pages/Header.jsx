@@ -20,7 +20,7 @@ const Header = ({userId,setUserId}) => {
         <>
             <HeaderTemplate>
                 <div className='logo'>
-                    <Link to='/'><h1>Viva ra Trip</h1></Link>
+                    <Link to='/'><h1>Viva La Trip</h1></Link>
                     <h4>{userId}</h4>
                 </div>
                 <div className='buttons'>
