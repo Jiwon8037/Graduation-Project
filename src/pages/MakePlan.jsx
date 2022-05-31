@@ -69,7 +69,7 @@ const MakePlan = ({placeData,content,setUserId}) => {
             end date: <DatePicker dateFormat='yyyy년 MM월 dd일' selected={endDate} onChange={date=>setEndDate(date)}/>
             share plan? : <input type='checkbox' onClick={setPublic} checked={sendData.isPublic} readOnly={true}/><br/>
             plan title : <input type='text' placeholder={content} onChange={setTitle}/>
-            <div style={{backgroundColor:'lightskyblue'}}>
+            <div className='placeList'>
                 {checkedList.map(checkedPlace=>(
                     <PlaceNameItems placeData={checkedPlace} key={checkedPlace.id}/>
                 ))}

@@ -6,7 +6,8 @@ const StyledPostPage=styled.div`
     .post{
         display: flex;
         .placeNameList{
-            width:30%;
+            max-width: 20%;
+            //width:30%;
             margin: 2px;
             h3{
                 margin: 0;
@@ -18,6 +19,7 @@ const StyledPostPage=styled.div`
         .liked{
             width: 10%;
             margin-top:25px;
+            display: block;
         };
     }
 `;

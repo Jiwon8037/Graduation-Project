@@ -79,7 +79,7 @@ const PublicPlan = ({userId}) => {
                     <DayParsing placeData={myPlaceList}/>
                 </div>
                 <div className='liked'>
-                    좋아요: {plan.liked + ' '}
+                    좋아요: {plan.liked}<br/>
                     {(userId===plan.userId) || (
                         <>
                             <Button onClick={onClickLiked}>좋아요</Button>
