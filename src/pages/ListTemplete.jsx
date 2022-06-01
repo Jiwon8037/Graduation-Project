@@ -4,7 +4,9 @@ const StyledList=styled.div`
     margin: 2%;
     outline: none;
     padding: 0;
-    .placeList{
+    h2{
+    }
+    .planList{
         text-align: center;
     }
     .pagination{
