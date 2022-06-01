@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ResultMapRander from '../../components/ResultMapRander';
 import PlaceNameList from '../../components/PlaceNameList';
+import PostTemplete from '../PostTemplete';
+import DayParsing from '../../components/DayParsing';
+import Button from '../../components/common/Button';
 
 const PublicPlan = ({userId}) => {
     const params=useParams();
@@ -66,26 +68,27 @@ const PublicPlan = ({userId}) => {
     };
 
     return (
-        <div style={{display:'flex'}}>
-            <div style={{width:'15%'}}>
-                <h2>plan: {plan.title}</h2>
-                <PlaceNameList placeData={myPlaceList}/>
+        <PostTemplete>
+            <h2>{plan.title}</h2>
+            <div className='post'>
+                <div className='placeNameList'>
+                    <h3>장소 목록</h3>
+                    <PlaceNameList placeData={myPlaceList}/>
+                </div>
+                <div className='mapRander'>
+                    <DayParsing placeData={myPlaceList}/>
+                </div>
+                <div className='liked'>
+                    좋아요: {plan.liked}<br/>
+                    {(userId===plan.userId) || (
+                        <>
+                            <Button onClick={onClickLiked}>좋아요</Button>
+                            <Button onClick={onClickCopy}>일정복사</Button>
+                        </>
+                    )}
+                </div>
             </div>
-            <div style={{width:'75%'}}>
-                <ResultMapRander placeData={myPlaceList}/>
-            </div>
-            <div style={{width:'10%'}}>
-                좋아요 수: {plan.liked + ' '}
-                {(userId===plan.userId) ? (
-                    <div></div>
-                ) : (
-                    <div>
-                        <button onClick={onClickLiked}>좋아요</button>
-                        <button onClick={onClickCopy}>내 일정으로 가져오기</button>
-                    </div>
-                )}
-            </div>
-        </div>
+        </PostTemplete>
     );
 };
 

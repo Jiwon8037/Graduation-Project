@@ -5,7 +5,7 @@ const PlaceInfoList = ({placeData,check}) => {
 
     return (
         <div>
-            <div className='placeList' style={{backgroundColor:'Chartreuse'}}> 
+            <div className='placeList'> 
                 {placeListsPlaceData.map(place=>(
                     <PlaceInfoItems placeData={place} key={place.id} check={check}/>
                 ))}

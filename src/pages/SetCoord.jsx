@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import MapRander from '../components/MapRander';
 import PlaceInfoList from '../components/PlaceInfoList';
 import MakePlan from './MakePlan';
+import MakePlanTemplete from './MakePlanTemplete';
 
 const SetCoord = ({getData,check,places}) => {
     const [content,setContent]=useState('');
@@ -23,20 +24,22 @@ const SetCoord = ({getData,check,places}) => {
     };
  
     return (
-        <div style={{display:'flex'}}>
-            <div style={{width:'20%'}}>
+        <MakePlanTemplete>
+        <div className='makePlanPage'>
+            <div className='placeInfoList'>
                 장소 목록
                 <PlaceInfoList placeData={places} check={check} />
             </div>
-            <div className="option" style={{width:'60%'}}>
+            <div className="mapRander">
                 <input type="text" id="content" placeholder="검색 장소" onChange={onChange}/>
                 <button onClick={searchPlace}>검색</button>
                 <MapRander placeData={places}></MapRander>
             </div>
-            <div style={{width:'20%'}}>
+            <div className='makePlanData'>
                 <MakePlan placeData={places} content={content}/>
             </div>
         </div>
+        </MakePlanTemplete>
     );
 };
 
