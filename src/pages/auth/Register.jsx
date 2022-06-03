@@ -11,12 +11,16 @@ const Register = () => {
         pw:'',
         pwCheck:'',
     });
-    const {pw,pwCheck}=userForm;
+    const {id,pw,pwCheck}=userForm;
 
     const [mail,setMail]=useState({
         authNum:'',
         isEmailAuth:false,
     });
+
+    const isVaildID=id.includes('@')&&id.includes('.');
+    const isVaildPW=pw.length>=8;
+    const isVaildPWCheck=(pw===pwCheck);
 
     const onChangeUserForm=(event)=>{
         setUserForm({
@@ -32,7 +36,6 @@ const Register = () => {
         });
     };
 
-    
     const sendUserForm=()=>{
         if(pw!==pwCheck){
             alert('check pw!');
@@ -79,12 +82,20 @@ const Register = () => {
             <Input name='id' placeholder='E-MAIL' onChange={onChangeUserForm}/>
             <Input name='pw' placeholder='PW' onChange={onChangeUserForm} type='password'/>
             <Input name='pwCheck' placeholder='PW 확인' onChange={onChangeUserForm} type='password'/>
-            {(pw===pwCheck) ? (
+            {(isVaildID||id==='') || (
+                <div className='fail'>이메일을 입력 해 주세요.</div>
+            )}
+            {(isVaildPW||pw==='') || (
+                <div className='fail'>8자리 이상 입력하세요.</div>
+            )}
+            {(pw==='') || (isVaildPWCheck ? (
                 <div className='success'>비밀번호가 일치합니다.</div>
                 ):(
                 <div className='fail'>비밀번호가 일치하지 않습니다.</div>
+            ))}
+            {(isVaildID&&isVaildPW&&isVaildPWCheck)&&(
+                <Button onClick={sendUserForm}>register button</Button>
             )}
-            <Button onClick={sendUserForm}>register button</Button><hr/>
             {mail.isEmailAuth && (
                 <div>
                     <h3>이메일 인증번호 입력</h3>
