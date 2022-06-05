@@ -7,16 +7,16 @@ export const check=(id)=>({type:CHECK,id})
 const initialState={
     places:[
         {
-            address_name: '',
-            category_group_code: '',
-            category_group_name: '',
-            category_name: '',
-            distance: '',
+            address_name: String,
+            category_group_code: String,
+            category_group_name: String,
+            category_name: String,
+            distance: String,
             id: String,
-            phone: '',
+            phone: String,
             place_name: String,
-            place_url: '',
-            road_address_name: '',
+            place_url: String,
+            road_address_name: String,
             x: String,
             y: String,
             checked:Boolean

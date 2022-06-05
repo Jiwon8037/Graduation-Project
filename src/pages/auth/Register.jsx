@@ -37,27 +37,22 @@ const Register = () => {
     };
 
     const sendUserForm=()=>{
-        if(pw!==pwCheck){
-            alert('check pw!');
-        }
-        else{
-            axios.post('/api/register',userForm ,{withCredentials:true})//회원가입 정보 전송
-            .then((res)=>{
-                const success=res.data.success;
-                if(success==='success'){
-                    setMail({...mail,isEmailAuth:true});
-                }else if(success==='usedId'){
-                    alert('used id');
-                }else if(success==='emailErr'){
-                    alert('check your email');
-                }else{
-                    alert('unknown err');
-                };
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
-        }
+        axios.post('/api/register',userForm ,{withCredentials:true})//회원가입 정보 전송
+        .then((res)=>{
+            const success=res.data.success;
+            if(success==='success'){
+                setMail({...mail,isEmailAuth:true});
+            }else if(success==='usedId'){
+                alert('used id');
+            }else if(success==='emailErr'){
+                alert('check your email');
+            }else{
+                alert('unknown err');
+            };
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
     };
 
     const sendEmailAuth=()=>{

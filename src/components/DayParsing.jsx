@@ -26,9 +26,9 @@ const DayParsing = ({placeData,totalDays}) => {
     
     return (
         <div>
-            <button onClick={selectDay} value={-1}>전체보기</button>
+            <button onClick={selectDay} value={-1} key={-1}>전체보기</button>
             {[...Array(day)].map((num,i)=>
-                <button onClick={selectDay} value={i}>Day:{i+1}</button>
+                <button onClick={selectDay} value={i} key={i}>Day:{i+1}</button>
             )}
             <ResultMapRander placeData={dayPlaceList}/>
         </div>

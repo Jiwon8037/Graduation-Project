@@ -8,19 +8,19 @@ const MyPlan = ({planData}) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
-    const myPlaceList=[...planData.places];
+    const plan={...planData};
+    const myPlaceList=[...plan.places];
 
     return (
         <PostTemplete>
-            <h2>{planData.title}</h2>
+            <h2>{plan.title}</h2>
             <div className='post'>
                 <div className='placeNameList'>
                     <h3>장소 목록</h3>
                     <PlaceNameList placeData={myPlaceList}/>
                 </div>
                 <div className='mapRander'>
-                    <DayParsing placeData={myPlaceList} totalDays={planData.total_days}/>
-
+                    <DayParsing placeData={myPlaceList} totalDays={plan.total_days}/>
                 </div>
             </div>
             <button onClick={()=>{navigate(`/editPlan/${planId}`)}}>일정 수정</button>
