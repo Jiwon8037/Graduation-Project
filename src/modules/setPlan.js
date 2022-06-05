@@ -1,8 +1,11 @@
+import { handleActions } from "redux-actions";
+import { createAction } from "redux-actions";
+
 const SET_PLAN ='setPlan/SET_PLAN';
 const REMOVE_PLACE='setPlan/REMOVE_PLACE';
 
-export const setPlanData=(input)=>({type:SET_PLAN,input});
-export const removePlanPlace=(id)=>({type:REMOVE_PLACE,id});
+export const setPlanData=createAction(SET_PLAN,input=>input);
+export const removePlanPlace=createAction(REMOVE_PLACE,id=>id);
 
 const initialState={
     planData:{
@@ -28,20 +31,20 @@ const initialState={
     }
 }
 
-function setPlan(state=initialState,action){
-    switch(action.type){
-        case SET_PLAN:
-            return {...state,
-                planData:state.planData=action.input
+const setPlan=handleActions(
+    {
+        [SET_PLAN]:(state,{payload:input})=>({
+            ...state,
+            planData:state.planData=input
+        }),
+        [REMOVE_PLACE]:(state,{payload:id})=>({
+            ...state,
+            planData:{...state.planData,
+                places:state.planData.places.filter(place=>place.id !== id)
             }
-        case REMOVE_PLACE:
-            return{...state,
-                planData:{...state.planData,
-                    places:state.planData.places.filter(place=>place.id !== action.id)
-                }
-            };
-        default : return state;
-    }
-}
+        }),
+    },
+    initialState,
+);
 
 export default setPlan;

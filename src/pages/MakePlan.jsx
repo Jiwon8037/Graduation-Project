@@ -4,12 +4,12 @@ import PlaceNameItems from '../components/PlaceNameItems';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { connect } from 'react-redux';
 import { setUserId } from '../modules/auth';
+import { useDispatch } from 'react-redux';
 
-const MakePlan = ({placeData,content,setUserId}) => {
+const MakePlan = ({placeData,content}) => {
     const navigate=useNavigate();
-
+    const dispatch=useDispatch();
     const makePlansPlaceData=[...placeData];
     const checkedList=makePlansPlaceData.filter(place=>place.checked===true);
     const [startDate,setStartDate]=useState(new Date());
@@ -58,7 +58,7 @@ const MakePlan = ({placeData,content,setUserId}) => {
             navigate('/mypage',{replace:true});
             }else{
                 sessionStorage.removeItem('user');
-                setUserId(sessionStorage.getItem('user'));
+                dispatch(setUserId(sessionStorage.getItem('user')));
                 alert('로그인 후 이용해주세요');
                 navigate('/login',{replace:true});
             }
@@ -84,4 +84,4 @@ const MakePlan = ({placeData,content,setUserId}) => {
     );
 };
 
-export default connect(()=>({}),{setUserId})(MakePlan);
+export default MakePlan;
