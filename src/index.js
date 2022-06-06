@@ -3,14 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { applyMiddleware, createStore } from 'redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import rootReducer from './modules'
 import { setUserId } from './modules/auth';
+import ReduxThunk from 'redux-thunk';
 
-const store=createStore(rootReducer,composeWithDevTools());
+const store=createStore(rootReducer,applyMiddleware(ReduxThunk));
 
 function loadUser(){
   try{

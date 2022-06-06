@@ -9,6 +9,8 @@ const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,Compon
     const params=useParams();
     const planId=params.plan_id;
     useEffect(()=>{
+        setPlanData(planId)
+        /*
         axios.get('/api/myPlan',{
             params:{planId},
             withCredentials:true
@@ -26,6 +28,7 @@ const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,Compon
         .catch(error=>{
             console.log(error);
         });
+        */
     },[]);
 
     return (
