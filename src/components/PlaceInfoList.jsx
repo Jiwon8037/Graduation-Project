@@ -4,12 +4,12 @@ const PlaceInfoList = ({placeData,check}) => {
     const placeListsPlaceData=[...placeData];
 
     return (
-        <div>
-            <div className='placeList'> 
+        <div className='placeList'>
+            <ul>
                 {placeListsPlaceData.map(place=>(
                     <PlaceInfoItems placeData={place} key={place.id} check={check}/>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ResultMapRander from './ResultMapRander';
+import Button from './common/Button';
 
 const DayParsing = ({placeData,totalDays}) => {
     const mapRandersPlaceData=[...placeData];
@@ -26,9 +27,9 @@ const DayParsing = ({placeData,totalDays}) => {
     
     return (
         <div>
-            <button onClick={selectDay} value={-1} key={-1}>전체보기</button>
+            <Button onClick={selectDay} value={-1} key={-1}>All</Button>
             {[...Array(day)].map((num,i)=>
-                <button onClick={selectDay} value={i} key={i}>Day:{i+1}</button>
+                <Button onClick={selectDay} value={i} key={i}>Day:{i+1}</Button>
             )}
             <ResultMapRander placeData={dayPlaceList}/>
         </div>
