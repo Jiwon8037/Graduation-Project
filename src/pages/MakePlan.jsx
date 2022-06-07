@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { setUserId } from '../modules/auth';
+import Button from '../components/common/Button';
 
 const MakePlan = ({placeData,content,setUserId}) => {
     const navigate=useNavigate();
@@ -70,11 +71,11 @@ const MakePlan = ({placeData,content,setUserId}) => {
 
     return (
         <div className='checkedList' >
-            <button onClick={sendCheckedList}>submit</button><br/> 
-            start date : <DatePicker dateFormat='yyyy년 MM월 dd일' selected={startDate} onChange={date=>setStartDate(date)}/>
-            end date: <DatePicker dateFormat='yyyy년 MM월 dd일' selected={endDate} onChange={date=>setEndDate(date)}/>
-            share plan? : <input type='checkbox' onClick={setPublic} checked={sendData.isPublic} readOnly={true}/><br/>
-            plan title : <input type='text' placeholder={content} onChange={setTitle}/>
+            <Button onClick={sendCheckedList}>만들기</Button><br/>
+            여행 시작 일 : <DatePicker dateFormat='yyyy년 MM월 dd일' selected={startDate} onChange={date=>setStartDate(date)}/>
+            여행 종료 일: <DatePicker dateFormat='yyyy년 MM월 dd일' selected={endDate} onChange={date=>setEndDate(date)}/>
+            공유 여부 : <input type='checkbox' onClick={setPublic} checked={sendData.isPublic} readOnly={true}/><br/>
+            여행 이름 : <input type='text' placeholder={content} onChange={setTitle}/><br/>
             <div className='placeList'>
                 {checkedList.map(checkedPlace=>(
                     <PlaceNameItems placeData={checkedPlace} key={checkedPlace.id}/>

@@ -69,7 +69,20 @@ const PublicPlan = ({userId}) => {
 
     return (
         <PostTemplete>
-            <h2>{plan.title}</h2>
+            <div className='titleDiv'>
+                <div>
+                    <h2>{plan.title}</h2>
+                </div>
+            </div>
+            <div className='liked'>
+                <span>좋아요: {plan.liked}</span>
+                {(userId===plan.userId) || (
+                    <>
+                        <Button onClick={onClickLiked} style={{'margin-top':'5px'}}>좋아요</Button>
+                        <Button onClick={onClickCopy}>일정복사</Button>
+                    </>
+                )}
+            </div>
             <div className='post'>
                 <div className='placeNameList'>
                     <h3>장소 목록</h3>
@@ -77,15 +90,6 @@ const PublicPlan = ({userId}) => {
                 </div>
                 <div className='mapRander'>
                     <DayParsing placeData={myPlaceList}/>
-                </div>
-                <div className='liked'>
-                    좋아요: {plan.liked}<br/>
-                    {(userId===plan.userId) || (
-                        <>
-                            <Button onClick={onClickLiked}>좋아요</Button>
-                            <Button onClick={onClickCopy}>일정복사</Button>
-                        </>
-                    )}
                 </div>
             </div>
         </PostTemplete>

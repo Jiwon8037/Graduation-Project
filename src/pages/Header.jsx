@@ -21,22 +21,34 @@ const Header = ({userId,setUserId}) => {
             <HeaderTemplate>
                 <div className='logo'>
                     <Link to='/'><h1>Viva La Trip</h1></Link>
-                    <h4>{userId}</h4>
                 </div>
                 <div className='buttons'>
-                    {(userId!==null) ? (
-                        <>
-                            <Button onClick={logOut}>로그아웃</Button>
-                            <Button to='/mypage'>마이페이지</Button>
-                        </>
-                        ):(
-                        <>
-                            <Button to='/login'>로그인</Button>
-                            <Button to='/register'>회원가입</Button>
-                        </>
-                    )}
-                    <Button to='/makeSchedule'>일정 만들기</Button>
-                    <Button to='/publicpage'>다른사람의 일정</Button>
+                    <>
+                        <div className='loginIdDiv'>
+                            <h4>
+                                {userId!==null ? (
+                                        userId
+                                ) : (
+                                        <>&nbsp;</>
+                                )}
+                            </h4>
+                        </div>
+                        <div className='buttonDiv'>
+                            {(userId!==null) ? (
+                                <>
+                                    <Button onClick={logOut}>로그아웃</Button>
+                                    <Button to='/mypage'>마이페이지</Button>
+                                </>
+                                ):(
+                                <>
+                                    <Button to='/login'>로그인</Button>
+                                    <Button to='/register'>회원가입</Button>
+                                </>
+                            )}
+                            <Button to='/makeSchedule'>일정 만들기</Button>
+                            <Button to='/publicpage'>다른사람의 일정</Button>
+                        </div>
+                    </>
                 </div>
             </HeaderTemplate>
             <main>
