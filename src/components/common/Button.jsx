@@ -15,7 +15,7 @@ const buttonStyle=css`
     background: white;
     &:hover{
         color:white;
-        background: #8c68ee;
+        background: #0d304b;
         //border-color: white;
     }
 `;
