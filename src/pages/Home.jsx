@@ -8,8 +8,6 @@ const StyledList=styled.div`
     `;
 
 const Home = () => {
-    
-
     const [btnName,setBtnName]=useState('');
 
     const registerText=`1. 회원가입
