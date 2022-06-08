@@ -1,11 +1,6 @@
 import React from 'react';
-import './home.css';
 import { useState } from 'react';
-import styled from 'styled-components';
-
-const StyledList=styled.div`
-    text-align:center;
-    `;
+import HomeTemplete from './HomeTemplete';
 
 const Home = () => {
     const [btnName,setBtnName]=useState('');
@@ -45,7 +40,7 @@ const Home = () => {
     };
 
     return (
-        <div>
+        <HomeTemplete>
             <div>
                 <h1 className="title">How To Vivalatrip </h1>
                 <h3 className="subtitle">모든 기능은 로그인을 해야 이용할 수 있으나, 다른 사람의 일정 보기에는 로그인이 요구되지 않습니다.</h3>
@@ -60,7 +55,7 @@ const Home = () => {
             <div className='text'>
                 {btnName}
             </div>
-        </div>
+        </HomeTemplete>
     );
 }
 
