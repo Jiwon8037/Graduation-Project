@@ -2,8 +2,10 @@ import React, {useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setPlanData,removePlanPlace } from '../modules/setPlan';
+import MyPlan from '../pages/mypage/MyPlan';
+import DndContainer from './DndContainer';
 
-const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,ComponentName}) => {
+const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,componentName}) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
@@ -19,11 +21,15 @@ const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,Compon
         }
     },[]);
 
-    return (
-        <div>
-            <ComponentName setUserId={setUserId}  planData={planData} removePlanPlace={removePlanPlace}/>
-        </div>
-    );
+    if(componentName==='MyPlan'){
+        return(
+            <MyPlan setUserId={setUserId}  planData={planData} removePlanPlace={removePlanPlace}/>
+        )
+    }else{
+        return(
+            <DndContainer setUserId={setUserId}  planData={planData} removePlanPlace={removePlanPlace}/>
+        )
+    }
 }
 export default connect(
     (state)=>({

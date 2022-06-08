@@ -12,7 +12,10 @@ const PlaceInfoItems = ({placeData,check}) => {
     return (
         <ListItemDiv>
             <li>
-                {place_name} <input type='checkbox' onClick={onClick} checked={checked} readOnly={true}/>
+                <label>
+                    <input type='checkbox' onClick={onClick} checked={checked} readOnly={true}/>
+                    {place_name} 
+                </label>
             </li>
         </ListItemDiv>
     );

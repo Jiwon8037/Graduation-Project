@@ -4,6 +4,7 @@ import MapRander from '../components/MapRander';
 import PlaceInfoList from '../components/PlaceInfoList';
 import MakePlan from './MakePlan';
 import MakePlanTemplete from './MakePlanTemplete';
+import Button from '../components/common/Button';
 
 const SetCoord = ({getData,check,places}) => {
     const [content,setContent]=useState('');
@@ -27,12 +28,17 @@ const SetCoord = ({getData,check,places}) => {
         <MakePlanTemplete>
         <div className='makePlanPage'>
             <div className='placeInfoList'>
-                장소 목록
-                <PlaceInfoList placeData={places} check={check} />
+                <div>
+                    <input className='searchInput' type="text" id="content" placeholder="장소를 입력하세요." onChange={onChange}/>
+                    <Button className='searchBtn' onClick={searchPlace} >검색</Button>        
+                </div>
+                <div className='clear'></div>
+                <div className='placeListDiv'>
+                    장소 목록
+                    <PlaceInfoList placeData={places} check={check} />
+                </div>
             </div>
             <div className="mapRander">
-                <input type="text" id="content" placeholder="검색 장소" onChange={onChange}/>
-                <button onClick={searchPlace}>검색</button>
                 <MapRander placeData={places}></MapRander>
             </div>
             <div className='makePlanData'>
