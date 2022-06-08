@@ -89,7 +89,7 @@ const PublicPlan = ({userId}) => {
                     <PlaceNameList placeData={myPlaceList}/>
                 </div>
                 <div className='mapRander'>
-                    <DayParsing placeData={myPlaceList}/>
+                    <DayParsing placeData={myPlaceList} totalDays={plan.total_days}/>
                 </div>
             </div>
         </PostTemplete>
