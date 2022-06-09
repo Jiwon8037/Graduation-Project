@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import PlaceNameList from '../../components/PlaceNameList';
 import PostTemplete from '../PostTemplete';
 import DayParsing from '../../components/DayParsing';
 import Button from '../../components/common/Button';
+import { apiCopyPlan, apiGetPublicPlan, apiLiked } from '../../lib/api';
 
 const PublicPlan = ({userId}) => {
     const params=useParams();
@@ -25,10 +25,7 @@ const PublicPlan = ({userId}) => {
     const myPlaceList=[...plan.places];
 
     useEffect(()=>{
-        axios.get('/api/publicPlan',{
-            params:{planId},
-            withCredentials:true
-        })
+        apiGetPublicPlan(planId)
         .then(res=>{
             setPlan(res.data);
         })
@@ -38,7 +35,7 @@ const PublicPlan = ({userId}) => {
     },[]);
     
     const onClickLiked=()=>{
-        axios.get('/api/publicPlan/liked',{withCredentials:true})
+        apiLiked()
         .then(res=>{
             if(res.data==='login'){
                 alert('로그인 후 이용 해 주세요.');
@@ -52,7 +49,7 @@ const PublicPlan = ({userId}) => {
     };
     
     const onClickCopy=()=>{
-        axios.get('/api/publicPlan/copy',{withCredentials:true})
+        apiCopyPlan()
         .then(res=>{
             if(res.data==='login'){
                 alert('로그인 후 이용 해 주세요.');

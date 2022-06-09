@@ -1,20 +1,17 @@
 import React from 'react';
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Pagination from '../../components/Pagination';
 import PlanList from '../../components/PlanList';
 import ListTemplete from '../ListTemplete';
+import { apiPublicPageList } from '../../lib/api';
 
 const PublicPage = ({setOthersPlan,planList}) => {
     const [searchParams]=useSearchParams();
     const page=(parseInt(searchParams.get('page'))||1)-1;
 
     useEffect(()=>{
-        axios.get('/api/publicPageList',{
-            params:{page},
-            withCredentials:true
-        })
+        apiPublicPageList(page)
         .then(res=>{
             setOthersPlan(res.data);
         })

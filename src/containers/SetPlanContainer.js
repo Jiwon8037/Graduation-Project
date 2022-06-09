@@ -2,19 +2,16 @@ import React, {useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setPlanData,removePlanPlace } from '../modules/setPlan';
-import axios from 'axios';
 import MyPlan from '../pages/mypage/MyPlan';
 import DndContainer from './DndContainer';
+import { apiGetMyPlan } from '../lib/api';
 
 const SetPlanContainer = ({setPlanData,removePlanPlace,planData,setUserId,componentName}) => {
     const navigate=useNavigate();
     const params=useParams();
     const planId=params.plan_id;
     useEffect(()=>{
-        axios.get('/api/myPlan',{
-            params:{planId},
-            withCredentials:true
-        })
+        apiGetMyPlan(planId)
         .then(res=>{
             if(res.data.loginSuccess===true){
                 setPlanData(res.data);

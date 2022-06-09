@@ -47,7 +47,7 @@ const AuthTemplate = ({children}) => {
         <StyledAuthTemplate>
             <WhiteBox>
             <div className='logo-area'>
-                Viva ra Trip
+                Viva La Trip
             </div>
             {children}
             </WhiteBox>

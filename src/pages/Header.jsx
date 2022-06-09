@@ -1,12 +1,12 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import axios from 'axios';
 import Button from '../components/common/Button';
 import HeaderTemplate from './HeaderTemplate';
+import { apiLogout } from '../lib/api';
 
 const Header = ({userId,setUserId}) => {
     const logOut=()=>{
-        axios.post('/api/logout',null,{withCredentials:true})
+        apiLogout()
         .then(()=>{
             sessionStorage.removeItem('user');
             setUserId(sessionStorage.getItem('user'));

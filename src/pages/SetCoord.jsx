@@ -1,10 +1,10 @@
-import axios from 'axios';
 import React,{useState} from 'react';
 import MapRander from '../components/MapRander';
 import PlaceInfoList from '../components/PlaceInfoList';
 import MakePlan from './MakePlan';
 import MakePlanTemplete from './MakePlanTemplete';
 import Button from '../components/common/Button';
+import { apiSearchPlace } from '../lib/api';
 
 const SetCoord = ({getData,check,places}) => {
     const [content,setContent]=useState('');
@@ -15,7 +15,7 @@ const SetCoord = ({getData,check,places}) => {
     const searchPlace=()=>{
         const contentData={keyword : content,};
 
-        axios.post('/getData',contentData,{withCredentials:true})
+        apiSearchPlace(contentData)
         .then((res)=>{
             getData(res.data);
         })

@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Pagination from '../../components/Pagination';
 import PlanList from '../../components/PlanList';
+import { apiGetMyPageList } from '../../lib/api';
 import ListTemplete from '../ListTemplete';
 
 const MyPage = ({getPlanData,planList,setUserId}) => {
@@ -11,10 +11,7 @@ const MyPage = ({getPlanData,planList,setUserId}) => {
     const page=(parseInt(searchParams.get('page'))||1)-1;
 
     useEffect(()=>{
-        axios.get('/api/myPageList',{
-            params:{page},
-            withCredentials:true
-        })
+        apiGetMyPageList(page)
         .then(res=>{
             if(res.data.loginSuccess===true){
                 getPlanData(res.data);

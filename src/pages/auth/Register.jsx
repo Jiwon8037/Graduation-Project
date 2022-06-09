@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
+import { apiEmailAuth, apiRegister } from '../../lib/api';
 
 const Register = () => {
     const navigate=useNavigate();
@@ -37,7 +37,7 @@ const Register = () => {
     };
 
     const sendUserForm=()=>{
-        axios.post('/api/register',userForm ,{withCredentials:true})//회원가입 정보 전송
+        apiRegister(userForm)//회원가입 정보 전송
         .then((res)=>{
             const success=res.data.success;
             if(success==='success'){
@@ -56,7 +56,7 @@ const Register = () => {
     };
 
     const sendEmailAuth=()=>{
-        axios.post('/api/register/email',mail)//이메일인증번호 전송
+        apiEmailAuth(mail)//이메일인증번호 전송
         .then(res=>{
             if(res.data.success===true){
                 alert('register success');

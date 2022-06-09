@@ -3,8 +3,8 @@ import update from 'immutability-helper';
 import DndPlace from './DndPlace';
 import ResultMapRander from '../../components/ResultMapRander';
 import DatePicker from 'react-datepicker';
-import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { apiEdit } from '../../lib/api';
 
 const PlanEdit = ({planData,removePlanPlace}) => {
     const navigate=useNavigate();
@@ -55,7 +55,7 @@ const PlanEdit = ({planData,removePlanPlace}) => {
     };
 
     const sendEdit=()=>{
-        axios.post('/api/edit',sendData,{withCredentials:true})
+        apiEdit(sendData)
         .then(
             navigate(`/myplan/${parmas}`)
         )

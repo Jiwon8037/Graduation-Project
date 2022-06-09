@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/common/Button';
 import Input from '../../components/common/Input';
+import { apiLogin } from '../../lib/api';
 
 const Login = ({setUserId, userId}) => {
     const navigate=useNavigate();
@@ -24,7 +24,7 @@ const Login = ({setUserId, userId}) => {
         form.append("id", loginForm.id);
         form.append("pw", loginForm.pw);
         axios.post('/api/login',form,{withCredentials: true})*/
-        axios.post('/api/login',loginForm,{withCredentials: true})
+        apiLogin(loginForm)
         .then((res)=>{
             if(res.data.loginSuccess===true){
                 sessionStorage.setItem('user',String(res.data.id));

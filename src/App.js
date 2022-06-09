@@ -19,12 +19,12 @@ function App({setUserId,userId}) {
           <Route index element={<Home/>}/>
           <Route path='/makeSchedule' element={<SetPlaceContainer/>}/>
           <Route path='/login' element={<AuthPage componentName={'login'}/>}/>
+          <Route path='/register' element={<AuthPage componentName={'register'}/>}/>
           <Route path='/myplan/:plan_id' element={<SetPlanContainer setUserId={setUserId} componentName={'MyPlan'}/>}/>
           <Route path='/editPlan/:plan_id' element={<SetPlanContainer setUserId={setUserId} componentName={'DndContainer'}/>}/>
           <Route path='/mypage' element={<MyPageContainer setUserId={setUserId}/>}/>
           <Route path='/publicplan/:plan_id' element={<PublicPlan userId={userId}/>}/>
           <Route path='/publicpage' element={<PublicPageContainer/>}/>
-          <Route path='/register' element={<AuthPage componentName={'register'}/>}/>
         </Route>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
