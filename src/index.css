@@ -23,3 +23,13 @@ a{/**/
 code{
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Couier New', monospace;
 }
+main{
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 83.4px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
