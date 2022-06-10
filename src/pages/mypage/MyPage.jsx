@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import Pagination from '../../components/Pagination';
 import PlanList from '../../components/PlanList';
 import { apiGetMyPageList } from '../../lib/api';
-import ListTemplete from '../ListTemplete';
+import PlanListTemplete from '../PlanListTemplete';
 
 const MyPage = ({getPlanData,planList,setUserId}) => {
     const navigate=useNavigate();
@@ -28,11 +28,11 @@ const MyPage = ({getPlanData,planList,setUserId}) => {
     },[page]); 
     
     return (
-        <ListTemplete>
+        <PlanListTemplete>
             <h2>마이 페이지</h2>
             <PlanList pageName={'myPlan'} planList={planList.myPlans}/>
             <Pagination maxPage={planList.totalPage} pageName={'mypage'} pageNum={page+1}/>
-        </ListTemplete>
+        </PlanListTemplete>
     );
 };
 

@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
-import MapRander from '../components/MapRander';
-import PlaceInfoList from '../components/PlaceInfoList';
+import MapRander from '../../components/MapRander';
+import PlaceInfoList from '../../components/PlaceInfoList';
 import MakePlan from './MakePlan';
 import MakePlanTemplete from './MakePlanTemplete';
-import Button from '../components/common/Button';
-import { apiSearchPlace } from '../lib/api';
+import Button from '../../components/common/Button';
+import { apiSearchPlace } from '../../lib/api';
 
 const SetCoord = ({getData,check,places}) => {
     const [content,setContent]=useState('');

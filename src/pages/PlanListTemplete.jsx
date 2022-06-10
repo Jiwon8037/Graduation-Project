@@ -32,7 +32,7 @@ const StyledList=styled.div`
         width: 100%;
     }
 `;
-const ListTemplete = ({children}) => {
+const PlanListTemplete = ({children}) => {
     return (
         <StyledList>
             {children}
@@ -40,4 +40,4 @@ const ListTemplete = ({children}) => {
     );
 };
 
-export default ListTemplete;
+export default PlanListTemplete;

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import PlaceNameItems from '../components/PlaceNameItems';
+import PlaceNameItems from '../../components/PlaceNameItems';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
-import { setUserId } from '../modules/auth';
-import Button from '../components/common/Button';
-import { apiMakePlan } from '../lib/api';
+import { setUserId } from '../../modules/auth';
+import Button from '../../components/common/Button';
+import { apiMakePlan } from '../../lib/api';
 
 const MakePlan = ({placeData,content,setUserId}) => {
     const navigate=useNavigate();
