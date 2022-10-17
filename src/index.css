@@ -31,7 +31,8 @@ main {
   padding-bottom: 83.4px;
 }
 footer {
-  position: fixed;
-  bottom: 0;
+  position: relative;
+  /* bottom: 0; */
   width: 100%;
+  transform: translateY(100%);
 }
